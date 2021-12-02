@@ -2,3 +2,8 @@
   padding: 0px;
   margin: 0px;
 }
+.login_form #email_error,
+.login_form #pass_error {
+  margin-top: 5px;
+  display: none;
+}

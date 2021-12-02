@@ -13,7 +13,7 @@ function credentials_fill(){
     if(email.value === '' || email.value === null){
         alert("Please enter email")
     }
-    if(password.value === '' || password.value === null){
+    else if(password.value === '' || password.value === null){
         alert("Please enter password")
     }
 

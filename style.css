@@ -2,8 +2,10 @@
   padding: 0px;
   margin: 0px;
 }
-.login_form #email_error,
-.login_form #pass_error {
-  margin-top: 5px;
-  display: none;
+
+.needs-validation,
+.login_form {
+  background-color: rgba(47, 45, 45, 0.6);
+  margin: 2px;
+  border-radius: 5px;
 }

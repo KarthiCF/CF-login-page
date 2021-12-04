@@ -8,35 +8,41 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>CyberFactory login</title>
+    <title>Log in</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="home.js"></script>
   </head>
   <body>
    <section class="main" style="background-image: linear-gradient(rgba(4, 9, 30, 0.4), rgba(4, 9, 30, 0.4)),
-   url(/image/loginbg.jpg); height: 100vh; background-size: cover; width: 100%; background-position: 50% 50%;">
+   url(/image/kb.jpg); height: 100vh; background-size: cover; width: 100%; background-position: 50% 50%;">
     <div class="container-sm py-4 px-5">
 
         <div class="text-center py-4 ">
             <img class=" mt-2 mb-2 image-thumbnail rounded max-width: 20px; margin: auto;" height="100px" src="image/CFr.png" alt="site logo" >
-            <h3 class="text-center text-success mt-4 mb-1 mx-4">Sign in to CYBER FACTORY</h3>
+            <h3 class="text-center text-success mt-4 mb-1 mx-4">Login to CYBER FACTORY</h3>
+            <p class="text-secondary">Welcome again!</p>
             
-          </div>
-        <div id="error"></div>
-        <form class=" login_form mt-3 mb-4 "  style="max-width: 480px; margin: auto;" id="form" method="POST" name="form" >
+        </div>
+
+        <form class=" needs-validation mt-2 mb-4 p-4 " novalidate style="max-width: 480px; margin: auto;" id="form" >
 
           <!-- email block-->
             <div class="col-sm">
               <label for="Tooltips" class="form-label text-white">Email address</label>
               <input id="check-email" type="email" name="email" class="form-control" id="email"  placeholder="Enter your email here" required>
-              <div id="email_error" class=" form-text text-danger">This field should not be empty!</div>
+              <div class="invalid-feedback">Email should not be empty!\</div>
             </div>
 
             <!-- password block -->
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label text-white col-sm-2">Password</label>
-              <input type="password" name="password" class="form-control" id="password" placeholder="password">
-              <div id="pass_error" class="form-text text-danger">Password should not be empty!</div>
+              <input type="password" name="password" class="form-control" id="password1" placeholder="password" required oninput="return credentials_fill()" >
+
+              <div class="invalid-feedback">Password should not be empty!</div>
+              <!-- <div class="alert alert-warning mt-2 md-3 px-2" id="e2" role="alert">
+                Password is too short
+              </div> -->
+              
               <!-- check box-->
             </div>
             <div class="mb-3 form-check">
@@ -45,8 +51,12 @@
             </div>
 
             <!-- submit button-->
+           <div class="text-center ">
+            <button id="submitButton" onclick="credentials_fill()" type="submit" class="btn btn-primary" >Submit</button>
+           </div>
            <div class="text-center">
-            <button id="submitButton" onclick="credentials_fill()" type="submit" class="btn btn-primary">Submit</button>
+             <hr style="color: rgb(168, 168, 168); height: 2px; opacity: 100%;">
+             <p class="text-secondary text-center">Not a member yet?</p> <a class="btn btn-primary" href="signup.html" role="button">Sign up</a>
            </div>
           </form>
        </div>

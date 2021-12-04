@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Sign up</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="home.js"></script>
+  </head>
+
+
+  <body>
+    <section class="main" style="background-image: linear-gradient(rgba(4, 9, 30, 0.4), rgba(4, 9, 30, 0.4)),
+    url(/image/kb.jpg); height: 170vh; background-size:cover; width: 100%; background-position: 50% 50%;">
+    <div class="container-sm py-4 px-5 ">
+
+        <div class="text-center py-4 ">
+            <img class=" mt-2 mb-2 image-thumbnail rounded max-width: 20px; margin: auto;" height="100px" src="image/CFr.png" alt="site logo" >
+            <h3 class="text-center text-success mt-4 mb-1 mx-4">Create your free account in  CYBER FACTORY</h3>
+            <p class="text-secondary">Thank you for visiting us for the first time!</p>
+            
+        </div>
+        
+        <div class="p-1 container-sm">
+            <form class="needs-validation mt-2 p-4"  novalidate  style="max-width: 768px; margin: auto;">
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label class="form-label text-white" for="validationCustom01">First name</label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label class="form-label text-white" for="validationCustom02">Last name</label>
+                    <input type="text" class="form-control" id="validationCustom02" placeholder="Last name"  required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label class="form-label text-white" for="validationCustomUsername">Username</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                      </div>
+                      <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+                      <div class="invalid-feedback">
+                        Please choose a username.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label text-white" for="validationCustom03">Email address</label>
+                    <input type="email" class="form-control" id="validationCustom03" placeholder="Your email address" required>
+                    <div class="invalid-feedback">
+                      Please provide a valid email id.
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label class="form-label text-white" for="validationCustom04">Password</label>
+                    <input type="password" class="form-control" id="SignPass" placeholder="set password"   required>
+                    <div class="invalid-feedback" >
+                      Please enter a password.
+                    </div>
+                    
+                    
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label class="form-label text-white" for="validationCustom05">Confirm password</label>
+                    <input type="password" class="form-control" id="SignPassConfirm" placeholder="Confirm password" onkeyup="passcheck();" required>
+                    <div class="invalid-feedback">
+                        Please confirm password.
+                    </div>
+                    <div class="alert alert-danger mt-2"  id="e1" role="alert" style="display: none;">
+                        doesn't match
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check py-4">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-label text-white" class="form-check-label" for="invalidCheck">
+                      Agree to terms and conditions
+                    </label>
+                    <div class="invalid-feedback">
+                      You must agree before submitting.
+                    </div>
+                    <br>
+                    <div class="form-row "><a class=" col-md-3 mb-2" href="#">Terms and Conditions</a> <a class="col-md-3 mb-2" href="#">Privacy Policy</a></div>
+                    
+                  </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary text-center" type="submit">Sign up</button>
+                </div>
+        
+                <div class="form-group text-center ">                  
+                    <hr style="color: rgb(153, 153, 153); height: 6px; opacity: 100%;">
+                    <p class="text-secondary text-center mt-3 px-3">Already registered?</p> 
+                    <a class="btn btn-primary btn-md" href="login.html" role="button">Log in</a>
+                </div>
+            
+              </form>
+        </div>                    
+    </div>                    
+    </section>
+
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>

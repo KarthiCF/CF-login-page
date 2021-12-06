@@ -1,24 +1,70 @@
-/*Js code for login page */
-
-// const email = document.getElementById("check-email");
-// const password = document.getElementById("password");
-// const form = document.getElementById("form");
-// const errorElement = document.getElementById("error")
 
 
-// function credentials_fill(){
-//     let email = document.getElementById("check-email");
-//     let password1 = document.getElementById("password1");
-//     var e1 = document.getElementById("e1")
-//     var e2 = document.getElementById("e2")
-//     if(password1.value < 8){
-//         e2.style.display="block"
-//     }
-//     else{
-//         e2.style.display="none"
-//     }
 
-// }
+// localStorage.setItem('time', 'not');
+// console.log(localStorage.getItem('time'));
+
+// localStorage.setItem('service', '24/7');
+// console.log(localStorage.getItem('service'));
+
+// localStorage.setItem('service', 'not now');
+// console.log(localStorage.getItem('service'));
+
+// sessionStorage.setItem('food', 'pizza')
+// console.log(sessionStorage.getItem('food'))
+
+// sessionStorage.setItem('food', 'idly')
+// console.log(sessionStorage.getItem('food'))
+
+// sessionStorage.setItem('workout', 'diet')
+// console.log(sessionStorage.getItem('workout'))
+
+
+
+let studentDetails= 
+`{
+	"students" :
+	[
+		{
+		"name" : "Wren",
+		"rollNo" : 30,
+        "gender" : "male",
+        "arrears" : null,
+        "passedOut" : true
+		},
+        {
+        "name" : "Martha",
+        "rollNo" : 19,
+        "gender" : "female",
+        "arrears" : null,
+        "passedOut" : true
+        },
+        {
+        "name" : "Kevin",
+        "rollNo" : 13,
+        "gender" : "male",
+        "arrears" : 2,
+        "passedOut" : false
+        },   
+        {
+        "name" : "Timothy",
+        "rollNo" : 25,
+        "gender" : "male",
+        "arrears" : null,
+        "passedOut" : true
+        },
+        {
+        "name" : "Elisa",
+        "rollNo" : 8,
+        "gender" : "female",
+        "arrears" : 2,
+        "passedOut" : false
+        }
+	]
+}`
+
+console.log(JSON.parse(studentDetails))
+
 
 
 
@@ -45,35 +91,6 @@
   })();
 
 
-// function passcheck(){
-//     let Signin_Pass = document.getElementById("SignPass")
-//     let Signin_Pass_Confirm = document.getElementById("SignPassConfirm")
-//     // var e1 = document.getElementById("e1")
-//     if(Signin_Pass.value === Signin_Pass_Confirm.value ){
-//         e1.style.display = "none"
-//     }
-    
-
-//     else{
-//         e1.style.display = "block"
-//     }
-// }
-
-
-
-// function Validate(){
-//     var e1 = document.getElementById("e1")
-//     var e2 = document.getElementById("e2")
-//     if(Signin_Pass.value.match(/[0-9]/)){
-//         e2.style.display = "none"
-//     }
-//     else{
-        
-//     }
-    
-// }
-
-
 
 var passcheck = function() {
     
@@ -86,3 +103,7 @@ var passcheck = function() {
     
     }
   }
+
+
+
+  

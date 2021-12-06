@@ -1,0 +1,41 @@
+
+{
+	"students" :
+	[
+		{
+		"name" : "Wren",
+		"rollNo" : 30,
+        "gender" : "male",
+        "arrears" : null,
+        "passedOut" : true
+		},
+        {
+        "name" : "Martha",
+        "rollNo" : 19,
+        "gender" : "female",
+        "arrears" : null,
+        "passedOut" : true
+        },
+        {
+        "name" : "Kevin",
+        "rollNo" : 13,
+        "gender" : "male",
+        "arrears" : 2,
+        "passedOut" : false
+        },   
+        {
+        "name" : "Timothy",
+        "rollNo" : 25,
+        "gender" : "male",
+        "arrears" : null,
+        "passedOut" : true
+        },
+        {
+        "name" : "Elisa",
+        "rollNo" : 8,
+        "gender" : "female",
+        "arrears" : 2,
+        "passedOut" : false
+        }
+	]
+}

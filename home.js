@@ -21,86 +21,7 @@
 
 
 
-let studentDetails= 
-`{
-	"students" :
-	[
-		{
-		"name" : "Wren",
-		"rollNo" : 30,
-        "class" : "A",
-        "gender" : "male",
-        "arrears" : null,
-        "percentage" : "90%",
-        "rank" : 2,
-        "involvedInSports" : false,
-        "appliedScholorship" : true,
-        "passedOut" : true
-		},
-        {
-        "name" : "Martha",
-        "rollNo" : 19,
-        "class" : "A",
-        "gender" : "female",
-        "arrears" : null,
-        "percentage" : "95%",
-        "rank" : 1,
-        "involvedInSports" : true,
-        "appliedScholorship" : false,
-        "passedOut" : true
-        },
-        {
-        "name" : "Martin",
-        "rollNo" : 31,
-        "class" : "A",
-        "gender" : "male",
-        "arrears" : 1,
-        "percentage" : "80%",
-        "rank" : null,
-        "involvedInSports" : true,
-        "appliedScholorship" : true,
-        "passedOut" : false
-        },
-        {
-        "name" : "Kevin",
-        "rollNo" : 13,
-        "class" : "B",
-        "gender" : "male",
-        "arrears" : 2,
-        "percentage" : "75%",
-        "rank" : null,
-        "involvedInSports" : false,
-        "appliedScholorship" : true,
-        "passedOut" : false
-        },   
-        {
-        "name" : "Timothy",
-        "rollNo" : 25,
-        "class" : "B",
-        "gender" : "male",
-        "arrears" : null,
-        "percentage" : "89%",
-        "rank" : 10,
-        "involvedInSports" : false,
-        "appliedScholorship" : false,
-        "passedOut" : true
-        },
-        {
-        "name" : "Elisa",
-        "rollNo" : 8,
-        "class" : "B",
-        "gender" : "female",
-        "arrears" : 1,
-        "percentage" : "78%",
-        "rank" : null,
-        "involvedInSports" : true,
-        "appliedScholorship" : true,
-        "passedOut" : false
-        }
-	]
-}`
 
-console.log(JSON.parse(studentDetails))
 
 
 
@@ -141,6 +62,104 @@ var passcheck = function() {
     }
   }
 
+  let studentDetails= 
+  `{
+    "students" :
+    [
+      {
+      "name" : "Wren",
+      "rollNo" : 30,
+          "class" : "A",
+          "gender" : "male",
+          "arrears" : null,
+          "percentage" : "90%",
+          "rank" : 2,
+          "involvedInSports" : false,
+          "appliedScholorship" : true,
+          "passedOut" : true
+      },
+          {
+          "name" : "Martha",
+          "rollNo" : 19,
+          "class" : "A",
+          "gender" : "female",
+          "arrears" : null,
+          "percentage" : "95%",
+          "rank" : 1,
+          "involvedInSports" : true,
+          "appliedScholorship" : false,
+          "passedOut" : true
+          },
+          {
+          "name" : "Martin",
+          "rollNo" : 31,
+          "class" : "A",
+          "gender" : "male",
+          "arrears" : 1,
+          "percentage" : "80%",
+          "rank" : null,
+          "involvedInSports" : true,
+          "appliedScholorship" : true,
+          "passedOut" : false
+          },
+          {
+          "name" : "Kevin",
+          "rollNo" : 13,
+          "class" : "B",
+          "gender" : "male",
+          "arrears" : 2,
+          "percentage" : "75%",
+          "rank" : null,
+          "involvedInSports" : false,
+          "appliedScholorship" : true,
+          "passedOut" : false
+          },   
+          {
+          "name" : "Timothy",
+          "rollNo" : 25,
+          "class" : "B",
+          "gender" : "male",
+          "arrears" : null,
+          "percentage" : "89%",
+          "rank" : 10,
+          "involvedInSports" : false,
+          "appliedScholorship" : false,
+          "passedOut" : true
+          },
+          {
+          "name" : "Elisa",
+          "rollNo" : 8,
+          "class" : "B",
+          "gender" : "female",
+          "arrears" : 1,
+          "percentage" : "78%",
+          "rank" : null,
+          "involvedInSports" : true,
+          "appliedScholorship" : true,
+          "passedOut" : false
+          }
+    ]
+  }`
+  
+  console.log(JSON.parse(studentDetails))
 
-
+ 
+  $.getJSON("data.json", function(data){
+      var student_data = '';
+      $.each(data, function(key, value){
+          student_data += '<tr>';
+          student_data += '<td>' +value.name+ '</td>'
+          student_data += '<td>' +value.rollNo+ '</td>'
+          student_data += '<td>' +value.class+ '</td>'
+          student_data += '<td>' +value.gender+ '</td>'
+          student_data += '<td>' +value.arrears+ '</td>'
+          student_data += '<td>' +value.percentage+ '</td>'
+          student_data += '<td>' +value.rank+ '</td>'
+          student_data += '<td>' +value.involvedInSports+ '</td>'
+          student_data += '<td>' +value.appliedScholorship+ '</td>'
+          student_data += '<td>' +value.passedOut+ '</td>'
+          student_data += '</tr>';
+      });
+      $('#student_data').append(student_data);
+  });
   

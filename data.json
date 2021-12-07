@@ -1,78 +1,74 @@
-
+[
 {
-	"students" :
-	[
-		{
-		"name" : "Wren",
-		"rollNo" : 30,
-        "class" : "A",
-        "gender" : "male",
-        "arrears" : null,
-        "percentage" : "90%",
-        "rank" : 2,
-        "involvedInSports" : false,
-        "appliedScholorship" : true,
-        "passedOut" : true
-		},
-        {
-        "name" : "Martha",
-        "rollNo" : 19,
-        "class" : "A",
-        "gender" : "female",
-        "arrears" : null,
-        "percentage" : "95%",
-        "rank" : 1,
-        "involvedInSports" : true,
-        "appliedScholorship" : false,
-        "passedOut" : true
-        },
-        {
-        "name" : "Martin",
-        "rollNo" : 31,
-        "class" : "A",
-        "gender" : "male",
-        "arrears" : 1,
-        "percentage" : "80%",
-        "rank" : null,
-        "involvedInSports" : true,
-        "appliedScholorship" : true,
-        "passedOut" : false
-        },
-        {
-        "name" : "Kevin",
-        "rollNo" : 13,
-        "class" : "B",
-        "gender" : "male",
-        "arrears" : 2,
-        "percentage" : "75%",
-        "rank" : null,
-        "involvedInSports" : false,
-        "appliedScholorship" : true,
-        "passedOut" : false
-        },   
-        {
-        "name" : "Timothy",
-        "rollNo" : 25,
-        "class" : "B",
-        "gender" : "male",
-        "arrears" : null,
-        "percentage" : "89%",
-        "rank" : 10,
-        "involvedInSports" : false,
-        "appliedScholorship" : false,
-        "passedOut" : true
-        },
-        {
-        "name" : "Elisa",
-        "rollNo" : 8,
-        "class" : "B",
-        "gender" : "female",
-        "arrears" : 1,
-        "percentage" : "78%",
-        "rank" : null,
-        "involvedInSports" : true,
-        "appliedScholorship" : true,
-        "passedOut" : false
-        }
-	]
+"name" : "Wren",
+"rollNo" : 30,
+"class" : "A",
+"gender" : "male",
+"arrears" : null,
+"percentage" : "90%",
+"rank" : 2,
+"involvedInSports" : false,
+"appliedScholorship" : true,
+"passedOut" : true
+},
+{
+"name" : "Martha",
+"rollNo" : 19,
+"class" : "A",
+"gender" : "female",
+"arrears" : null,
+"percentage" : "95%",
+"rank" : 1,
+"involvedInSports" : true,
+"appliedScholorship" : false,
+"passedOut" : true
+},
+{
+"name" : "Martin",
+"rollNo" : 31,
+"class" : "A",
+"gender" : "male",
+"arrears" : 1,
+"percentage" : "80%",
+"rank" : null,
+"involvedInSports" : true,
+"appliedScholorship" : true,
+"passedOut" : false
+},
+{
+"name" : "Kevin",
+"rollNo" : 13,
+"class" : "B",
+"gender" : "male",
+"arrears" : 2,
+"percentage" : "75%",
+"rank" : null,
+"involvedInSports" : false,
+"appliedScholorship" : true,
+"passedOut" : false
+},   
+{
+"name" : "Timothy",
+"rollNo" : 25,
+"class" : "B",
+"gender" : "male",
+"arrears" : null,
+"percentage" : "89%",
+"rank" : 10,
+"involvedInSports" : false,
+"appliedScholorship" : false,
+"passedOut" : true
+},
+{
+"name" : "Elisa",
+"rollNo" : 8,
+"class" : "B",
+"gender" : "female",
+"arrears" : 1,
+"percentage" : "78%",
+"rank" : null,
+"involvedInSports" : true,
+"appliedScholorship" : true,
+"passedOut" : false
 }
+]

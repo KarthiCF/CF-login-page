@@ -34,6 +34,7 @@ let studentDetails=
         "percentage" : "90%",
         "rank" : 2,
         "involvedInSports" : false,
+        "appliedScholorship" : true,
         "passedOut" : true
 		},
         {
@@ -45,6 +46,7 @@ let studentDetails=
         "percentage" : "95%",
         "rank" : 1,
         "involvedInSports" : true,
+        "appliedScholorship" : false,
         "passedOut" : true
         },
         {
@@ -56,6 +58,7 @@ let studentDetails=
         "percentage" : "80%",
         "rank" : null,
         "involvedInSports" : true,
+        "appliedScholorship" : true,
         "passedOut" : false
         },
         {
@@ -67,6 +70,7 @@ let studentDetails=
         "percentage" : "75%",
         "rank" : null,
         "involvedInSports" : false,
+        "appliedScholorship" : true,
         "passedOut" : false
         },   
         {
@@ -78,6 +82,7 @@ let studentDetails=
         "percentage" : "89%",
         "rank" : 10,
         "involvedInSports" : false,
+        "appliedScholorship" : false,
         "passedOut" : true
         },
         {
@@ -89,6 +94,7 @@ let studentDetails=
         "percentage" : "78%",
         "rank" : null,
         "involvedInSports" : true,
+        "appliedScholorship" : true,
         "passedOut" : false
         }
 	]

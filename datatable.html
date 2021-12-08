@@ -3,44 +3,46 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>Student data</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>DataForm</title>
+
     <link rel="stylesheet" href="style.css">
     <script defer src="home.js"></script>
-    <script type="text/javascript" src="data.json"></script>
   </head>
-  <body > 
-    
+
+
+  <body>
     <div class="container">
         <div class="table-responsive">
             <h1 class="text-center text-success mt-4 mb-1 mx-4" >STUDENT DETAILS</h1>
             <br>
+            
             <table class="table  table-bordered table-striped" id="student_data">
-                <tr class="text-center table-primary ">
-                    <th>Name</th>
-                    <th>Roll No</th>
-                    <th>Class</th>
-                    <th>Gender</th>
-                    <th>Arrears</th>
-                    <th>Percentage</th>
-                    <th>Rank</th>
-                    <th>In Sports</th>
-                    <th>Scholorship applied</th>
-                    <th>Passed out</th>
-
+                <tr class=" bg-info text-white ">
+                    <th data-column="name" data-order="desc">Name &ensp;</th>
+                    <th data-column="rollNo" data-order="desc">Roll No &ensp;</th>
+                    <th data-column="class" data-order="desc">Class &ensp;</th>
+                    <th data-column="gender" data-order="desc">Gender &ensp;</th>
+                    <th data-column="dob" data-order="desc">DOB &ensp;</th>
+                    <th data-column="arrears" data-order="desc">Arrears &ensp;</th>
+                    <th data-column="percentage" data-order="desc">Percentage % &ensp;</th>
+                    <th data-column="rank" data-order="desc">Rank &ensp;</th>
+                    <th data-column="involvedInSports" data-order="desc">In Sports &ensp;</th>
+                    <th data-column="appliedScholorship" data-order="desc">Scholorship applied &ensp;</th>
+                    <th data-column="passedOut" data-order="desc">Passed out &ensp;</th>
+    
                 </tr>
+                <tbody id="myTable"></tbody>
+                
             </table>
         </div>
     </div>
-
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    
-
 </html>

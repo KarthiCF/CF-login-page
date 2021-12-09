@@ -38,83 +38,84 @@ var passcheck = function() {
 var studentDetail = [
   {
   "name" : "Wren",
-  "rollNo" : 30,
+  "rollNo" : "30",
   "class" : "A",
   "gender" : "male",
   "dob" :"14.05.2010",
-  "arrears" : null,
-  "percentage" : 90,
-  "rank" : 2,
+  "arrears" : "0",
+  "percentage" : "90",
+  "rank" : "2",
   "involvedInSports" : false,
   "appliedScholorship" : true,
   "passedOut" : true
   },
   {
   "name" : "Martha",
-  "rollNo" : 19,
+  "rollNo" : "19" ,
   "class" : "A",
   "gender" : "female",
   "dob" :"20.11.2010",
-  "arrears" : null,
-  "percentage" : 95,
-  "rank" : 1,
+  "arrears" : "0",
+  "percentage" : "92",
+  "rank" : "1",
   "involvedInSports" : true,
   "appliedScholorship" : false,
   "passedOut" : true
   },
   {
   "name" : "Martin",
-  "rollNo" : 31,
+  "rollNo" : "31",
   "class" : "A",
   "gender" : "male",
   "dob" :"22.01.2010",
-  "arrears" : 1,
-  "percentage" : 80,
-  "rank" : null,
+  "arrears" : "1",
+  "percentage" : "80",
+  "rank" : "0",
   "involvedInSports" : true,
   "appliedScholorship" : true,
   "passedOut" : false
   },
   {
   "name" : "Kevin",
-  "rollNo" : 13,
+  "rollNo" : "13",
   "class" : "B",
   "gender" : "male",
   "dob" :"12.12.2009",
-  "arrears" : 2,
-  "percentage" : 75,
-  "rank" : null,
+  "arrears" : "2",
+  "percentage" : "75",
+  "rank" : "0",
   "involvedInSports" : false,
   "appliedScholorship" : true,
   "passedOut" : false
   },   
   {
   "name" : "Timothy",
-  "rollNo" : 25,
+  "rollNo" : "25",
   "class" : "B",
   "gender" : "male",
   "dob" :"28.06.2010",
-  "arrears" : null,
-  "percentage" : 89,
-  "rank" : 10,
+  "arrears" : "0",
+  "percentage" : "89",
+  "rank" : "17",
   "involvedInSports" : false,
   "appliedScholorship" : false,
   "passedOut" : true
   },
   {
   "name" : "Elisa",
-  "rollNo" : 8,
+  "rollNo" : "8",
   "class" : "B",
   "gender" : "female",
   "dob" :"11.08.2009",
-  "arrears" : 1,
-  "percentage" : 78,
-  "rank" : null,
+  "arrears" : "1",
+  "percentage" : "78",
+  "rank" : "0",
   "involvedInSports" : true,
   "appliedScholorship" : true,
   "passedOut" : false
   }
   ]
+  
   
 //filter the data using search box
 $('#search-input').on('keyup', function(){
@@ -131,9 +132,26 @@ function searchBox(value, data){
   for (var i = 0; i < data.length; i++){
     console.log(i, data.length)
     value = value.toLowerCase()
+    
     var name = data[i].name.toLowerCase()
+    var rollNo = data[i].rollNo.toLowerCase()
+    var classs = data[i].class.toLowerCase()
+    var gender = data[i].gender.toLowerCase()
+    var dob = data[i].dob.toLowerCase()
+    var arrears = data[i].arrears.toLowerCase()
+    var percentage = data[i].percentage.toLowerCase()
+    var rank = data[i].rank.toLowerCase()
+    
 
-    if (name.includes(value)){
+    if (name.startsWith(value) || //startsWith - for finding starting of the field only
+    classs.startsWith(value) || 
+    gender.startsWith(value) ||
+    rollNo.startsWith(value) ||
+    dob.includes(value) ||      // include - for finding anywhere in the field
+    arrears.startsWith(value) ||
+    percentage.startsWith(value) ||
+    rank.startsWith(value))
+    {
       filterData.push(data[i])
     }
   }

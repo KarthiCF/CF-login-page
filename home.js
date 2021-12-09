@@ -119,13 +119,13 @@ var studentDetail = [
 //filter the data using search box
 $('#search-input').on('keyup', function(){
   var value = $(this).val()
-  var data = searchTable(value, studentDetail)
+  var data = searchBox(value, studentDetail)
   buildTable(data)
 })
 
 buildTable(studentDetail)
 
-function searchTable(value, data){
+function searchBox(value, data){
   var filterData = []
 
   for (var i = 0; i < data.length; i++){

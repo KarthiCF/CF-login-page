@@ -136,6 +136,8 @@ function searchBox(value, data){
     if (name.includes(value)){
       filterData.push(data[i])
     }
+    if (name.includes(value)){
+      filterData.push(data[i])
   }
   return filterData
 }

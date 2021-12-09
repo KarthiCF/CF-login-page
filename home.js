@@ -116,8 +116,33 @@ var studentDetail = [
   }
   ]
   
-  
-  
+//filter the data using search box
+$('#search-input').on('keyup', function(){
+  var value = $(this).val()
+  var data = searchTable(value, studentDetail)
+  buildTable(data)
+})
+
+buildTable(studentDetail)
+
+function searchTable(value, data){
+  var filterData = []
+
+  for (var i = 0; i < data.length; i++){
+    console.log(i, data.length)
+    value = value.toLowerCase()
+    var name = data[i].name.toLowerCase()
+
+    if (name.includes(value)){
+      filterData.push(data[i])
+    }
+  }
+  return filterData
+}
+
+
+
+//sort the table
 $('th').on('click', function(){
   var column = $(this).data('column')
   var order = $(this).data('order')

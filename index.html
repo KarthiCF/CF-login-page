@@ -11,6 +11,7 @@
     <title>Log in</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="home.js"></script>
+    
     <script type="text/javascript" src="data.json"></script> <!--link for json file-->
   </head>
   <body>
@@ -30,20 +31,24 @@
           <!-- email block-->
             <div class="col-sm">
               <label for="Tooltips" class="form-label text-white">Email address</label>
-              <input id="check-email" type="email" name="email" class="form-control" id="email"  placeholder="Enter your email here" required>
+              <input id="emailLogin" type="email" name="email" class="form-control"  placeholder="Enter your email here" required>
               <div class="invalid-feedback">Email should not be empty!</div>
             </div>
 
             <!-- password block -->
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label text-white col-sm-2">Password</label>
-              <input type="password" name="password" class="form-control" id="password1" placeholder="password" required oninput="return credentials_fill()" >
+              <input type="password" name="password" class="form-control" id="passwordLogin" placeholder="password" required  >
 
               <div class="invalid-feedback">Password should not be empty!</div>
-              <!-- <div class="alert alert-warning mt-2 md-3 px-2" id="e2" role="alert">
-                Password is too short
-              </div> -->
-              
+              <div class="alert alert-danger mt-2" id="signAlert" style="display: none;" role="alert">
+                Incorrect credentials!
+              </div>
+              <div class="alert alert-success mt-2" id="signAlertGood" style="display: none;" role="alert">
+                You have been succesfully logged in to Cyber Factory <a href="datatable.html" class="alert-link">Click here</a> to navigate to our Home page
+              </div>
+
+
               <!-- check box-->
             </div>
             <div class="mb-3 form-check">
@@ -53,7 +58,8 @@
 
             <!-- submit button-->
            <div class="text-center ">
-            <button id="submitButton" onclick="credentials_fill()" type="submit" class="btn btn-primary" >Submit</button>
+            <button id="submitButton"  type="submit" class="btn btn-primary" >Log in</button>
+            <!-- <a class="btn btn-primary" href="datatable.html" role="button"  type="submit">Log in</a> -->
            </div>
            <div class="text-center">
              <hr style="color: rgb(168, 168, 168); height: 2px; opacity: 100%;">
@@ -61,7 +67,7 @@
            </div>
           </form>
        </div>
-       <div class="loginDetail text-center"><a href="datatable.html">Fetch data</a></div>
+       <!-- <div class="loginDetail text-center"><a href="datatable.html">Fetch data</a></div> -->
        
     
     
@@ -70,4 +76,39 @@
   
 
   </body>
+  <script>
+    const logEmail = document.querySelector("#emailLogin"); //login dept
+    const logPass = document.querySelector("#passwordLogin"); //login dept
+    const loginBtn = document.querySelector("#submitButton") ;//login dept
+  
+    loginBtn.addEventListener("click", function(event){
+      var emailLog = localStorage.setItem("LoginEmail", logEmail.value)
+      var PassLog = localStorage.setItem("LoginPassword", logPass.value)
+
+      if(localStorage.getItem("LoginEmail") === localStorage.getItem('emailId') && localStorage.getItem("LoginPassword") === localStorage.getItem('password')&&
+      localStorage.getItem("LoginEmail") !== "" &&
+      localStorage.getItem("LoginPassword") !== ""){
+        event.preventDefault();
+        event.stopPropagation();
+        document.getElementById("signAlert").style.display="none";
+        document.getElementById("signAlertGood").style.display="block";
+        window.location.href="home.html"
+      }
+
+      else if(localStorage.getItem("LoginEmail") === "" || localStorage.getItem("LoginPassword") === "" ){
+        document.getElementById("signAlert").style.display="none";
+        document.getElementById("signAlertGood").style.display="none";
+      }
+      else{
+        event.preventDefault();
+        event.stopPropagation();
+        document.getElementById("signAlert").style.display="block";
+        document.getElementById("signAlertGood").style.display="none";
+      };
+    });
+   
+
+  
+  
+  </script>
 </html>

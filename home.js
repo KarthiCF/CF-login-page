@@ -20,11 +20,11 @@
 })();
 
 
-
+//verify whether password and confirm passwords are same
 var passcheck = function() {
   
-  if (document.getElementById('SignPass').value ==
-    document.getElementById('SignPassConfirm').value)  {
+  if (document.getElementById('passwordSignin').value ==
+    document.getElementById('confirmPasswordSignin').value)  {
     document.getElementById('e1').style.display="none";
     }
   else{
@@ -32,6 +32,52 @@ var passcheck = function() {
   
   }
 }
+
+//push new object to array
+
+const form = document.querySelector("form"); //signup dept
+const fname = document.querySelector('#firstName');
+const lname = document.querySelector('#lastName');
+const uname = document.querySelector('#userName');
+const email = document.querySelector('#emailSignin');
+const passwd = document.querySelector('#passwordSignin');
+const passwdConf = document.querySelector('#confirmPasswordSignin');
+const checkBox = document.querySelector('#invalidCheck');
+
+const signupBtn = document.querySelector('#signupButton'); //signup dept
+
+
+
+signupBtn.addEventListener("click", function(event){
+  var unameSign = localStorage.setItem("username", uname.value);
+  var emailSign = localStorage.setItem("emailId", email.value);
+  var passSign = localStorage.setItem("password", passwd.value);
+
+  if(fname.value !== "" && lname.value !== "" && uname.value !== "" &&
+     email.value !== "" && passwd.value !== "" && passwdConf.value !== "" 
+     && document.getElementById("invalidCheck").checked){
+    event.preventDefault();   
+    event.stopPropagation();
+    document.getElementById("RegisterSucess").style.display="block";
+  }
+ 
+  
+});
+
+
+function storeUserCred(getUname, getEmail, getPass){
+    this.getUname = getUname;
+    this.getEmail = getEmail;
+    this.getPass = getPass;
+  }
+  
+  const getUserCredentials = [ ];
+  
+  getUserCredentials.push(new storeUserCred(localStorage.getItem('username'), localStorage.getItem('emailId'), localStorage.getItem('password')))
+ 
+  
+  console.log(getUserCredentials)
+
 
 
 //following code is responsible for the table of data from json and sorting it:
@@ -115,12 +161,14 @@ var studentDetail = [
   "passedOut" : false
   }
   ]
-  
+
+
   
 //filter the data using search box
 $('#search-input').on('keyup', function(){
   var value = $(this).val()
-  var data = searchBox(value, studentDetail)
+  var data =searchBox(value, studentDetail)
+  console.log(data)
   buildTable(data)
 })
 
@@ -206,5 +254,16 @@ function buildTable(data){
 
   }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 

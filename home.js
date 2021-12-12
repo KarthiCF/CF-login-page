@@ -1,4 +1,3 @@
-
 /* Js code for sign up page */
 
 
@@ -35,48 +34,69 @@ var passcheck = function() {
 
 //push new object to array
 
-const form = document.querySelector("form"); //signup dept
-const fname = document.querySelector('#firstName');
-const lname = document.querySelector('#lastName');
-const uname = document.querySelector('#userName');
-const email = document.querySelector('#emailSignin');
-const passwd = document.querySelector('#passwordSignin');
-const passwdConf = document.querySelector('#confirmPasswordSignin');
-const checkBox = document.querySelector('#invalidCheck');
 
-const signupBtn = document.querySelector('#signupButton'); //signup dept
+var fname = document.querySelector('#firstName');
+    lname = document.querySelector('#lastName');
+    uname = document.querySelector('#userName');
+    email = document.querySelector('#emailSignin');
+    passwd = document.querySelector('#passwordSignin');
+    passwdConf = document.querySelector('#confirmPasswordSignin');
+    checkBox = document.querySelector('#invalidCheck');
 
+    signupBtn = document.querySelector('#signupButton'); 
+ 
 
 
 signupBtn.addEventListener("click", function(event){
-  var unameSign = localStorage.setItem("username", uname.value);
-  var emailSign = localStorage.setItem("emailId", email.value);
-  var passSign = localStorage.setItem("password", passwd.value);
-
+ 
   if(fname.value !== "" && lname.value !== "" && uname.value !== "" &&
      email.value !== "" && passwd.value !== "" && passwdConf.value !== "" 
      && document.getElementById("invalidCheck").checked){
     event.preventDefault();   
     event.stopPropagation();
+    
+    storeItem();
     document.getElementById("RegisterSucess").style.display="block";
+    
   }
- 
-  
+  document.getElementById('form').reset()
+  function storeItem(){
+    
+
+    if(localStorage.getItem('First_Name') === null || localStorage.getItem('Last_Name') === null ||
+      localStorage.getItem('User_Name') === null || localStorage.getItem('Email') === null)
+      {
+
+      localStorage.setItem('First_Name', '[]'); 
+      localStorage.setItem('Last_Name', '[]');
+      localStorage.setItem('User_Name', '[]');
+      localStorage.setItem('Email', '[]');
+    }
+
+    let oldFname = JSON.parse(localStorage.getItem('First_Name'));
+    oldFname.push(fname.value);
+
+    let oldLname = JSON.parse(localStorage.getItem('Last_Name'));
+    oldLname.push(lname.value);
+
+    let oldUname = JSON.parse(localStorage.getItem('User_Name'));
+    oldUname.push(uname.value);
+
+    let oldEmail = JSON.parse(localStorage.getItem('Email'));
+    oldEmail.push(email.value);
+
+    console.log(localStorage.getItem('Email'))
+
+    localStorage.setItem('First_Name', JSON.stringify(oldFname))
+    localStorage.setItem('Last_Name', JSON.stringify(oldLname))
+    localStorage.setItem('User_Name', JSON.stringify(oldUname))
+    localStorage.setItem('Email', JSON.stringify(oldEmail))
+
+    
+  }
 });
 
 
-function storeUserCred(getUname, getEmail, getPass){
-    this.getUname = getUname;
-    this.getEmail = getEmail;
-    this.getPass = getPass;
-  }
-  
-  const getUserCredentials = [ ];
-  
-  getUserCredentials.push(new storeUserCred(localStorage.getItem('username'), localStorage.getItem('emailId'), localStorage.getItem('password')))
- 
-  
-  console.log(getUserCredentials)
 
 
 
@@ -254,16 +274,3 @@ function buildTable(data){
 
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -77,25 +77,25 @@
 
   </body>
   <script>
-    const logEmail = document.querySelector("#emailLogin"); //login dept
-    const logPass = document.querySelector("#passwordLogin"); //login dept
-    const loginBtn = document.querySelector("#submitButton") ;//login dept
+    const logEmail = document.querySelector("#emailLogin"); 
+    const logPass = document.querySelector("#passwordLogin"); 
+    const loginBtn = document.querySelector("#submitButton") ;
   
     loginBtn.addEventListener("click", function(event){
-      var emailLog = localStorage.setItem("LoginEmail", logEmail.value)
-      var PassLog = localStorage.setItem("LoginPassword", logPass.value)
-
-      if(localStorage.getItem("LoginEmail") === localStorage.getItem('emailId') && localStorage.getItem("LoginPassword") === localStorage.getItem('password')&&
-      localStorage.getItem("LoginEmail") !== "" &&
-      localStorage.getItem("LoginPassword") !== ""){
+    
+      if(
+      logEmail.value !== "" &&
+      logPass.value !== ""){
         event.preventDefault();
         event.stopPropagation();
         document.getElementById("signAlert").style.display="none";
         document.getElementById("signAlertGood").style.display="block";
         window.location.href="home.html"
+
       }
 
-      else if(localStorage.getItem("LoginEmail") === "" || localStorage.getItem("LoginPassword") === "" ){
+      
+      else if(logEmail.value === "" || logPass.value === "" ){
         document.getElementById("signAlert").style.display="none";
         document.getElementById("signAlertGood").style.display="none";
       }
@@ -105,10 +105,11 @@
         document.getElementById("signAlert").style.display="block";
         document.getElementById("signAlertGood").style.display="none";
       };
+      console.log(localStorage.getItem('emailId'));
+      console.log(localStorage.getItem('Email'));
+    
+     
     });
    
-
-  
-  
   </script>
 </html>

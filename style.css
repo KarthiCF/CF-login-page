@@ -14,3 +14,6 @@
   height: 30px;
   width: 250px;
 }
+.main {
+  background-attachment: local;
+}

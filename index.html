@@ -16,7 +16,7 @@
   </head>
   <body>
    <section class="main" style="background-image: linear-gradient(rgba(4, 9, 30, 0.4), rgba(4, 9, 30, 0.4)),
-   url(/image/kb.jpg); height: 100vh; background-size: cover; width: 100%; background-position: 50% 50%;">
+   url(/image/kb.jpg); height: auto; background-size: cover; width: 100%; background-position: 50% 50%;">
     <div class="container-sm py-4 px-5">
 
         <div class="text-center py-4 ">
@@ -81,11 +81,11 @@
     const logEmail = document.querySelector("#emailLogin"); 
     const logPass = document.querySelector("#passwordLogin"); 
     const loginBtn = document.querySelector("#submitButton") ;
-    const gmail = localStorage.getItem('Email');
+    const gmail = localStorage.getItem('User_Info');
    
     loginBtn.addEventListener("click", function(event){
     
-      if(JSON.parse(gmail).find(element => element === logEmail.value) &&
+      if(
       logEmail.value !== "" &&
       logPass.value !== ""){
         event.preventDefault();
@@ -97,10 +97,14 @@
       }
 
       
-      else if(logEmail.value === "" || logPass.value === "" ){
+      else if(logEmail.value === "" || logPass.value === ""){
         document.getElementById("signAlert").style.display="none";
         // document.getElementById("signAlertGood").style.display="none";
       }
+
+      // else if(localStorage.setItem() === null){
+      //   document.getElementById("signAlert").style.display="block";
+      //}
       else{
         event.preventDefault();
         event.stopPropagation();
@@ -109,13 +113,14 @@
       };
      
       
-      // console.log(localStorage.getItem('emailId'));
+      console.log(localStorage.getItem('User_Info'));
       // console.log(localStorage.getItem('Email'));
-      // console.log(JSON.stringify(logEmail.value) )
-      // console.log(gmail)
-      // console.log(typeof(gmail))
-      // console.log(JSON.parse(gmail))
-      // console.log(typeof(JSON.parse(gmail)))
+      console.log(JSON.stringify(logEmail.value) )
+      console.log(gmail)
+      console.log(typeof(gmail))
+      console.log(JSON.parse(gmail))
+      console.log(typeof(JSON.parse(gmail)))
+      // console.log(localStorage.getItem('emailId'))
      
     });
    

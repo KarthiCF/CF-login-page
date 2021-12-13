@@ -70,35 +70,26 @@ signupBtn.addEventListener("click", function(event){
   document.getElementById('form').reset()
 
   function storeItem(){
-    if(localStorage.getItem('First_Name') === null || localStorage.getItem('Last_Name') === null ||
-      localStorage.getItem('User_Name') === null || localStorage.getItem('Email') === null)
+    if(localStorage.getItem('User_Info') === null)
       {
 
-      localStorage.setItem('First_Name', '[]'); 
-      localStorage.setItem('Last_Name', '[]');
-      localStorage.setItem('User_Name', '[]');
-      localStorage.setItem('Email', '[]');
+      localStorage.setItem('User_Info', '[]'); 
+      
+    };
+    var user_credentials ={
+      "first_name" : fname.value,
+      "last_name" : lname.value,
+      "user_name" : uname.value,
+      "email_address" : email.value,
     }
 
-    let oldFname = JSON.parse(localStorage.getItem('First_Name'));
-    oldFname.push(fname.value);
+    let oldFname = JSON.parse(localStorage.getItem('User_Info'));
+    oldFname.push(user_credentials);
 
-    let oldLname = JSON.parse(localStorage.getItem('Last_Name'));
-    oldLname.push(lname.value);
+    
 
-    let oldUname = JSON.parse(localStorage.getItem('User_Name'));
-    oldUname.push(uname.value);
-
-    let oldEmail = JSON.parse(localStorage.getItem('Email'));
-    oldEmail.push(email.value);
-
-    console.log(localStorage.getItem('Email'))
-
-    localStorage.setItem('First_Name', JSON.stringify(oldFname))
-    localStorage.setItem('Last_Name', JSON.stringify(oldLname))
-    localStorage.setItem('User_Name', JSON.stringify(oldUname))
-    localStorage.setItem('Email', JSON.stringify(oldEmail))
-
+    localStorage.setItem('User_Info', JSON.stringify(oldFname))
+    
    
   }
 });

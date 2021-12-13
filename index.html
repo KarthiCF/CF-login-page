@@ -42,11 +42,12 @@
 
               <div class="invalid-feedback">Password should not be empty!</div>
               <div class="alert alert-danger mt-2" id="signAlert" style="display: none;" role="alert">
-                Incorrect credentials!
+                <b>Couldn't find your account</b>
+                <p>There's no account for that email. Try logging in with a different email.</p>
               </div>
-              <div class="alert alert-success mt-2" id="signAlertGood" style="display: none;" role="alert">
+              <!-- <div class="alert alert-success mt-2" id="signAlertGood" style="display: none;" role="alert">
                 You have been succesfully logged in to Cyber Factory <a href="datatable.html" class="alert-link">Click here</a> to navigate to our Home page
-              </div>
+              </div> -->
 
 
               <!-- check box-->
@@ -80,16 +81,17 @@
     const logEmail = document.querySelector("#emailLogin"); 
     const logPass = document.querySelector("#passwordLogin"); 
     const loginBtn = document.querySelector("#submitButton") ;
-  
+    const gmail = localStorage.getItem('Email');
+   
     loginBtn.addEventListener("click", function(event){
     
-      if(
+      if(JSON.parse(gmail).find(element => element === logEmail.value) &&
       logEmail.value !== "" &&
       logPass.value !== ""){
         event.preventDefault();
         event.stopPropagation();
         document.getElementById("signAlert").style.display="none";
-        document.getElementById("signAlertGood").style.display="block";
+        // document.getElementById("signAlertGood").style.display="block";
         window.location.href="home.html"
 
       }
@@ -97,17 +99,23 @@
       
       else if(logEmail.value === "" || logPass.value === "" ){
         document.getElementById("signAlert").style.display="none";
-        document.getElementById("signAlertGood").style.display="none";
+        // document.getElementById("signAlertGood").style.display="none";
       }
       else{
         event.preventDefault();
         event.stopPropagation();
         document.getElementById("signAlert").style.display="block";
-        document.getElementById("signAlertGood").style.display="none";
+        // document.getElementById("signAlertGood").style.display="none";
       };
-      console.log(localStorage.getItem('emailId'));
-      console.log(localStorage.getItem('Email'));
-    
+     
+      
+      // console.log(localStorage.getItem('emailId'));
+      // console.log(localStorage.getItem('Email'));
+      // console.log(JSON.stringify(logEmail.value) )
+      // console.log(gmail)
+      // console.log(typeof(gmail))
+      // console.log(JSON.parse(gmail))
+      // console.log(typeof(JSON.parse(gmail)))
      
     });
    

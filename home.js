@@ -20,19 +20,27 @@
 
 
 //verify whether password and confirm passwords are same
-var passcheck = function() {
-  
+function passcheck() {
   if (document.getElementById('passwordSignin').value ==
     document.getElementById('confirmPasswordSignin').value)  {
     document.getElementById('e1').style.display="none";
     }
   else{
     document.getElementById('e1').style.display="block";
-  
-  }
-}
+  };
+};
 
-//push new object to array
+//function to make sure the password length not less than 8 characters
+function pass_length() {
+  if(document.getElementById('passwordSignin').value.length >= Number(8)) {
+    document.getElementById('e2').style.display="none";
+  }
+  else{
+    document.getElementById('e2').style.display="block";
+  };
+};
+
+
 
 
 var fname = document.querySelector('#firstName');
@@ -58,11 +66,10 @@ signupBtn.addEventListener("click", function(event){
     storeItem();
     document.getElementById("RegisterSucess").style.display="block";
     
-  }
+  };
   document.getElementById('form').reset()
-  function storeItem(){
-    
 
+  function storeItem(){
     if(localStorage.getItem('First_Name') === null || localStorage.getItem('Last_Name') === null ||
       localStorage.getItem('User_Name') === null || localStorage.getItem('Email') === null)
       {
@@ -92,7 +99,7 @@ signupBtn.addEventListener("click", function(event){
     localStorage.setItem('User_Name', JSON.stringify(oldUname))
     localStorage.setItem('Email', JSON.stringify(oldEmail))
 
-    
+   
   }
 });
 

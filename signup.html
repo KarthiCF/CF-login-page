@@ -33,16 +33,17 @@
                     <!--First name-->
                     <label class="form-label text-white" for="validationCustom01">First name</label>
                     <input type="text" class="form-control" id="firstName" placeholder="First name" required>
-                    <div class="valid-feedback">
-                      Looks good!
+                    <div class="invalid-feedback">
+                     First name required!
                     </div>
+                   
                   </div>
                   <!--Last name-->
                   <div class="col-md-4 mb-3">
                     <label class="form-label text-white" for="validationCustom02">Last name</label>
                     <input type="text" class="form-control" id="lastName" placeholder="Last name"  required>
-                    <div class="valid-feedback">
-                      Looks good!
+                    <div class="invalid-feedback">
+                      Last name required!
                     </div>
                   </div>
                   <!--username-->
@@ -54,7 +55,7 @@
                       </div>
                       <input type="text" class="form-control" id="userName" placeholder="Username" aria-describedby="inputGroupPrepend" required>
                       <div class="invalid-feedback">
-                        Please choose a username.
+                        Please set a username.
                       </div>
                     </div>
                   </div>
@@ -65,19 +66,25 @@
                   <!--email-->
                   <div class="col-md-6 mb-3">
                     <label class="form-label text-white" for="validationCustom03">Email address</label>
-                    <input type="email" class="form-control" id="emailSignin" placeholder="Your email address" required>
+                    <input type="email" class="form-control" id="emailSignin" placeholder="Your email address" onkeyup="check_uname()" required>
                     <div class="invalid-feedback">
                       Please provide a valid email id.
                     </div>
+                    <!-- <div class="alert alert-danger mt-2 px-1"  id="e3" role="alert" style="display: none;" >
+                      <p><small>Username already exist!</small></p>
+                  </div> -->
                   </div>
 
                   <!--Password-->
                   <div class="col-md-3 mb-3">
                     <label class="form-label text-white" for="validationCustom04">Password</label>
-                    <input type="password" class="form-control" id="passwordSignin" placeholder="set password"   required>
+                    <input type="password" class="form-control" id="passwordSignin" placeholder="set password"  onkeyup="pass_length()"  required>
                     <div class="invalid-feedback" >
                       Please enter a password.
-                    </div>  
+                    </div> 
+                    <div class="alert alert-danger mt-2 px-1"  id="e2" role="alert" style="display: none;" >
+                      <p><small>Password must contain at least 8 or more characters</small></p>
+                    </div>
                   </div>
                   <!--Confirm password-->
                   <div class="col-md-3 mb-3">
@@ -86,8 +93,8 @@
                     <div class="invalid-feedback">
                         Please confirm password.
                     </div>
-                    <div class="alert alert-danger mt-2"  id="e1" role="alert" style="display: none;">
-                        doesn't match
+                    <div class="alert alert-danger mt-2 px-1"  id="e1" role="alert" style="display: none;" >
+                        <p><small>Password doesn't match</small></p>
                     </div>
                   </div>
                 </div>
@@ -108,7 +115,7 @@
                 <!-- Register success alert-->
                 <div class="alert alert-success text-center" role="alert" style="display: none;" id="RegisterSucess">
                   <h4 class="alert-heading">Well done!</h4>
-                  <p>Aww yeah, you successfully created your account in <b>CYBER FACTORY</b>.</p>
+                  <p>You successfully created your account in <b>CYBER FACTORY</b>.</p>
                   <hr>
                   <p class="mb-0">Please <a href="index.html">click here </a>to navigate to login page.</p>
                 </div>

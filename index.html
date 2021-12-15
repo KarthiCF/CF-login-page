@@ -9,14 +9,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>Log in</title>
+    <link rel="icon" href="image/cf_icon.png">
     <link rel="stylesheet" href="style.css">
     <script defer src="home.js"></script>
+    
     
     <script type="text/javascript" src="data.json"></script> <!--link for json file-->
   </head>
   <body>
-   <section class="main" style="background-image: linear-gradient(rgba(4, 9, 30, 0.4), rgba(4, 9, 30, 0.4)),
-   url(/image/kb.jpg); height: auto; background-size: cover; width: 100%; background-position: 50% 50%;">
+   <section class="main" style="background-image: linear-gradient(rgba(4, 9, 30, 0.8), rgba(4, 9, 30, 0.8)),
+   url(/image/kb.webp) ; background-size: cover; height:auto; ; width: 100%; background-position: 50% 50%;">
     <div class="container-sm py-4 px-5">
 
         <div class="text-center py-4 ">
@@ -30,15 +32,15 @@
 
           <!-- email block-->
             <div class="col-sm">
-              <label for="Tooltips" class="form-label text-white">Email address</label>
+              <label for="Tooltips" class="form-label text-white  mb-2">Email address</label>
               <input id="emailLogin" type="email" name="email" class="form-control"  placeholder="Enter your email here" required>
               <div class="invalid-feedback">Email should not be empty!</div>
             </div>
 
             <!-- password block -->
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label text-white col-sm-2">Password</label>
-              <input type="password" name="password" class="form-control" id="passwordLogin" placeholder="password" required  >
+              <label for="exampleInputPassword1" class="form-label text-white  mb-2 mt-3">Password</label>
+              <input type="password" name="password" class="form-control " id="passwordLogin" placeholder="password" required  >
 
               <div class="invalid-feedback">Password should not be empty!</div>
               <div class="alert alert-danger mt-2" id="signAlert" style="display: none;" role="alert">
@@ -52,14 +54,14 @@
 
               <!-- check box-->
             </div>
-            <div class="mb-3 form-check">
+            <!-- <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label text-white" for="exampleCheck1">Remember me</label>
-            </div>
-
+            </div> -->
+            
             <!-- submit button-->
            <div class="text-center ">
-            <button id="submitButton"  type="submit" class="btn btn-primary" >Log in</button>
+            <button id="submitButton"  type="submit" class="btn btn-primary mt-\4" >Log in</button>
             <!-- <a class="btn btn-primary" href="datatable.html" role="button"  type="submit">Log in</a> -->
            </div>
            <div class="text-center">
@@ -69,7 +71,7 @@
           </form>
        </div>
        <!-- <div class="loginDetail text-center"><a href="datatable.html">Fetch data</a></div> -->
-       
+       <div class="log_block"></div>
     
     
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -78,16 +80,26 @@
 
   </body>
   <script>
-    const logEmail = document.querySelector("#emailLogin"); 
-    const logPass = document.querySelector("#passwordLogin"); 
+    
     const loginBtn = document.querySelector("#submitButton") ;
-    const gmail = localStorage.getItem('User_Info');
+    
+
+    
    
     loginBtn.addEventListener("click", function(event){
-    
-      if(
+      const logEmail = document.querySelector("#emailLogin"); 
+      const logPass = document.querySelector("#passwordLogin"); 
+      const storedInfo = localStorage.getItem('User_Info'); 
+      const storedInfoArray = JSON.parse(storedInfo) 
+      const emailValue = logEmail.value 
+
+      function isEmail(email){
+        return email.email_address === emailValue
+      } 
+
+      if(storedInfoArray !== null && storedInfoArray.findIndex(isEmail) !== -1 && 
       logEmail.value !== "" &&
-      logPass.value !== ""){
+      logPass.value !== ""  && storedInfo !== null){ 
         event.preventDefault();
         event.stopPropagation();
         document.getElementById("signAlert").style.display="none";
@@ -101,28 +113,21 @@
         document.getElementById("signAlert").style.display="none";
         // document.getElementById("signAlertGood").style.display="none";
       }
-
-      // else if(localStorage.setItem() === null){
-      //   document.getElementById("signAlert").style.display="block";
-      //}
       else{
         event.preventDefault();
         event.stopPropagation();
         document.getElementById("signAlert").style.display="block";
         // document.getElementById("signAlertGood").style.display="none";
       };
-     
-      
-      console.log(localStorage.getItem('User_Info'));
-      // console.log(localStorage.getItem('Email'));
-      console.log(JSON.stringify(logEmail.value) )
-      console.log(gmail)
-      console.log(typeof(gmail))
-      console.log(JSON.parse(gmail))
-      console.log(typeof(JSON.parse(gmail)))
-      // console.log(localStorage.getItem('emailId'))
-     
+      console.log(storedInfoArray)
     });
+
+  
+
+    
+    
+  
+     
    
   </script>
 </html>

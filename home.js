@@ -42,7 +42,7 @@ function pass_length() {
 
 
 
-
+//store registered user info in local storage
 var fname = document.querySelector('#firstName');
     lname = document.querySelector('#lastName');
     uname = document.querySelector('#userName');
@@ -52,7 +52,7 @@ var fname = document.querySelector('#firstName');
     checkBox = document.querySelector('#invalidCheck');
 
     signupBtn = document.querySelector('#signupButton'); 
- 
+   
 
 
 signupBtn.addEventListener("click", function(event){
@@ -64,10 +64,11 @@ signupBtn.addEventListener("click", function(event){
     event.stopPropagation();
     
     storeItem();
+  
     document.getElementById("RegisterSucess").style.display="block";
-    
+   
   };
-  document.getElementById('form').reset()
+  
 
   function storeItem(){
     if(localStorage.getItem('User_Info') === null)
@@ -90,10 +91,10 @@ signupBtn.addEventListener("click", function(event){
 
     localStorage.setItem('User_Info', JSON.stringify(oldFname))
     
-   
+    
   }
+  
 });
-
 
 
 

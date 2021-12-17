@@ -32,7 +32,7 @@ function passcheck() {
 
 //function to make sure the password length not less than 8 characters
 function pass_length() {
-  if(document.getElementById('passwordSignin').value.length >= Number(8)) {
+  if(document.getElementById('passwordSignin').value.length >= Number(4)) {
     document.getElementById('e2').style.display="none";
   }
   else{
@@ -44,29 +44,31 @@ function pass_length() {
 
 //store registered user info in local storage
 var fname = document.querySelector('#firstName');
-    lname = document.querySelector('#lastName');
-    uname = document.querySelector('#userName');
-    email = document.querySelector('#emailSignin');
-    passwd = document.querySelector('#passwordSignin');
-    passwdConf = document.querySelector('#confirmPasswordSignin');
-    checkBox = document.querySelector('#invalidCheck');
+var lname = document.querySelector('#lastName');
+var uname = document.querySelector('#userName');
+var phoneNo = document.querySelector('#phone')
+var email = document.querySelector('#emailSignin');
+var passwd = document.querySelector('#passwordSignin');
+var passwdConf = document.querySelector('#confirmPasswordSignin');
+var checkBox = document.querySelector('#invalidCheck');
 
-    signupBtn = document.querySelector('#signupButton'); 
-   
+var signupBtn = document.querySelector('#signupButton'); 
+
 
 
 signupBtn.addEventListener("click", function(event){
  
   if(fname.value !== "" && lname.value !== "" && uname.value !== "" &&
-     email.value !== "" && passwd.value !== "" && passwdConf.value !== "" 
+  phoneNo.value !== ""  && email.value !== "" && passwd.value !== "" && passwdConf.value !== "" 
      && document.getElementById("invalidCheck").checked){
     event.preventDefault();   
     event.stopPropagation();
     
     storeItem();
-  
+    
+    
     document.getElementById("RegisterSucess").style.display="block";
-   
+    displayDetails()
   };
   
 
@@ -81,6 +83,7 @@ signupBtn.addEventListener("click", function(event){
       "first_name" : fname.value,
       "last_name" : lname.value,
       "user_name" : uname.value,
+      "phone_number" : phoneNo.value,
       "email_address" : email.value,
     }
 
@@ -93,7 +96,47 @@ signupBtn.addEventListener("click", function(event){
     
     
   }
+
+  function displayDetails(){
+    const storedInfo = localStorage.getItem('User_Info'); 
+    const storedInfoArray = JSON.parse(storedInfo)
+
+    var list1 = [];
+    var list2 = [];
+    var list3 = [];
+    var list4 = [];
+    var list5 = [];
+    var n = 1;
+    var x = 0;
+
+    var display = document.getElementById('display')
+    var newRow = display.insertRow(row)
+
+    list1[x] = document.getElementById('fname.value')
+    list2[x] = document.getElementById('lname.value')
+    list3[x] = document.getElementById('uname.value')
+    list4[x] = document.getElementById('honeNo.value')
+    list5[x] = document.getElementById('email.value')
+
+    var cell1 = newRow.insertCell(0);
+    var cell2 = newRow.insertCell(1);
+    var cell3 = newRow.insertCell(2);
+    var cell4 = newRow.insertCell(3);
+    var cell5 = newRow.insertCell(4);
+
+    cell1.innerHTML= list1[x] 
+    cell2.innerHTML= list2[x]    
+    cell3.innerHTML= list3[x]    
+    cell4.innerHTML= list4[x] 
+    cell5.innerHTML= list5[x]    
+    n++;
+    x++;
+
+ 
+}
+ 
   
+ 
 });
 
 

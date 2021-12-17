@@ -55,5 +55,31 @@
         </div>
     </div>
   </body>
+  <script>
+      const storedInfo = localStorage.getItem('User_Info'); 
+      const storedInfoArray = JSON.parse(storedInfo)
+      x = 4
+    
+        var usernil = [
+            {
+                "first_name" : "USER1",
+                "last_name": "petr",
+                "user_name": "wakanda345",
+                "phone_number": "91 5657419632",
+                "email_address": "Rak@yahoo.com"
+            },
+            {
+                "first_name" : "USER1",
+                "last_name": "petr",
+                "user_name": "wakanda345",
+                "phone_number": "91 5657419632",
+                "email_address": "Rak@yahoo.com"
+            }]
+       
+        console.log(typeof(storedInfo))
+        console.log(storedInfoArray)
+        console.log(storedInfoArray[x].email_address)
+        console.log(typeof(usernil))
+</script>
   
 </html>

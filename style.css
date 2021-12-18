@@ -1,6 +1,7 @@
 * {
   padding: 0px;
   margin: 0px;
+  font-family: "Raleway", sans-serif;
 }
 
 .needs-validation {
@@ -31,3 +32,20 @@
   width: 100%;
   height: 231px;
 }
+#btndel {
+  color: rgb(231, 75, 75);
+  cursor: pointer;
+}
+
+#btnedit {
+  color: rgb(0, 174, 255);
+  cursor: pointer;
+}
+
+/* .DataForm {
+  background-color: rgba(22, 22, 24, 0.739);
+  margin: 5px;
+  padding: 4px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+} */

@@ -56,6 +56,9 @@ var signupBtn = document.querySelector('#signupButton');
 
 
 
+
+
+
 signupBtn.addEventListener("click", function(event){
  
   if(fname.value !== "" && lname.value !== "" && uname.value !== "" &&
@@ -68,10 +71,11 @@ signupBtn.addEventListener("click", function(event){
     
     
     document.getElementById("RegisterSucess").style.display="block";
-    displayDetails()
+    
+    document.getElementById("form").reset(); 
   };
   
-
+  
   function storeItem(){
     if(localStorage.getItem('User_Info') === null)
       {
@@ -97,47 +101,16 @@ signupBtn.addEventListener("click", function(event){
     
   }
 
-  function displayDetails(){
-    const storedInfo = localStorage.getItem('User_Info'); 
-    const storedInfoArray = JSON.parse(storedInfo)
+  
 
-    var list1 = [];
-    var list2 = [];
-    var list3 = [];
-    var list4 = [];
-    var list5 = [];
-    var n = 1;
-    var x = 0;
 
-    var display = document.getElementById('display')
-    var newRow = display.insertRow(row)
-
-    list1[x] = document.getElementById('fname.value')
-    list2[x] = document.getElementById('lname.value')
-    list3[x] = document.getElementById('uname.value')
-    list4[x] = document.getElementById('honeNo.value')
-    list5[x] = document.getElementById('email.value')
-
-    var cell1 = newRow.insertCell(0);
-    var cell2 = newRow.insertCell(1);
-    var cell3 = newRow.insertCell(2);
-    var cell4 = newRow.insertCell(3);
-    var cell5 = newRow.insertCell(4);
-
-    cell1.innerHTML= list1[x] 
-    cell2.innerHTML= list2[x]    
-    cell3.innerHTML= list3[x]    
-    cell4.innerHTML= list4[x] 
-    cell5.innerHTML= list5[x]    
-    n++;
-    x++;
-
- 
-}
  
   
  
 });
+
+
+
 
 
 
@@ -226,93 +199,93 @@ var studentDetail = [
 
 
   
-//filter the data using search box
-$('#search-input').on('keyup', function(){
-  var value = $(this).val()
-  var data =searchBox(value, studentDetail)
-  console.log(data)
-  buildTable(data)
-})
+// //filter the data using search box
+// $('#search-input').on('keyup', function(){
+//   var value = $(this).val()
+//   var data =searchBox(value, studentDetail)
+//   console.log(data)
+//   buildTable(data)
+// })
 
-buildTable(studentDetail)
+// buildTable(studentDetail)
 
-function searchBox(value, data){
-  var filterData = []
+// function searchBox(value, data){
+//   var filterData = []
 
-  for (var i = 0; i < data.length; i++){
-    console.log(i, data.length)
-    value = value.toLowerCase()
+//   for (var i = 0; i < data.length; i++){
+//     console.log(i, data.length)
+//     value = value.toLowerCase()
     
-    var name = data[i].name.toLowerCase()
-    var rollNo = data[i].rollNo.toLowerCase()
-    var classs = data[i].class.toLowerCase()
-    var gender = data[i].gender.toLowerCase()
-    var dob = data[i].dob.toLowerCase()
-    var arrears = data[i].arrears.toLowerCase()
-    var percentage = data[i].percentage.toLowerCase()
-    var rank = data[i].rank.toLowerCase()
+//     var name = data[i].name.toLowerCase()
+//     var rollNo = data[i].rollNo.toLowerCase()
+//     var classs = data[i].class.toLowerCase()
+//     var gender = data[i].gender.toLowerCase()
+//     var dob = data[i].dob.toLowerCase()
+//     var arrears = data[i].arrears.toLowerCase()
+//     var percentage = data[i].percentage.toLowerCase()
+//     var rank = data[i].rank.toLowerCase()
     
 
-    if (name.startsWith(value) || //startsWith - for finding starting of the field only
-    classs.startsWith(value) || 
-    gender.startsWith(value) ||
-    rollNo.startsWith(value) ||
-    dob.includes(value) ||      // include - for finding anywhere in the field
-    arrears.startsWith(value) ||
-    percentage.startsWith(value) ||
-    rank.startsWith(value))
-    {
-      filterData.push(data[i])
-    }
-  }
-  return filterData
-}
+//     if (name.startsWith(value) || //startsWith - for finding starting of the field only
+//     classs.startsWith(value) || 
+//     gender.startsWith(value) ||
+//     rollNo.startsWith(value) ||
+//     dob.includes(value) ||      // include - for finding anywhere in the field
+//     arrears.startsWith(value) ||
+//     percentage.startsWith(value) ||
+//     rank.startsWith(value))
+//     {
+//       filterData.push(data[i])
+//     }
+//   }
+//   return filterData
+// }
 
 
 
-//sort the table
-$('th').on('click', function(){
-  var column = $(this).data('column')
-  var order = $(this).data('order')
-  var text = $(this).html()
-  text = text.substring(0, text.length - 1)
+// //sort the table
+// $('th').on('click', function(){
+//   var column = $(this).data('column')
+//   var order = $(this).data('order')
+//   var text = $(this).html()
+//   text = text.substring(0, text.length - 1)
 
-  if(order == 'desc'){
-    $(this).data('order', "asc")
-    studentDetail = studentDetail.sort((a,b) => a[column] > b[column] ? 1 : -1)
-    text += '&#9660'
+//   if(order == 'desc'){
+//     $(this).data('order', "asc")
+//     studentDetail = studentDetail.sort((a,b) => a[column] > b[column] ? 1 : -1)
+//     text += '&#9660'
 
-  }else{
-    $(this).data('order', "desc")
-    studentDetail = studentDetail.sort((a,b) => a[column] < b[column] ? 1 : -1)
-    text += '&#9650'
+//   }else{
+//     $(this).data('order', "desc")
+//     studentDetail = studentDetail.sort((a,b) => a[column] < b[column] ? 1 : -1)
+//     text += '&#9650'
 
-  }
-  $(this).html(text)
-  buildTable(studentDetail)
-})
+//   }
+//   $(this).html(text)
+//   buildTable(studentDetail)
+// })
 
-buildTable(studentDetail)
+// buildTable(studentDetail)
 
-function buildTable(data){
-  var table = document.getElementById('myTable')
-  table.innerHTML = ''
-  for (var i = 0; i < data.length; i++){
-    var row = `<tr>
-            <td>${data[i].name}</td>
-            <td>${data[i].rollNo}</td>
-            <td>${data[i].class}</td>
-            <td>${data[i].gender}</td>
-            <td>${data[i].dob}</td>
-            <td>${data[i].arrears}</td>
-            <td>${data[i].percentage}</td>
-            <td>${data[i].rank}</td>
-            <td>${data[i].involvedInSports}</td>
-            <td>${data[i].appliedScholorship}</td>
-            <td>${data[i].passedOut}</td>
-          </tr>`
-    table.innerHTML += row
+// function buildTable(data){
+//   var table = document.getElementById('myTable')
+//   table.innerHTML = ''
+//   for (var i = 0; i < data.length; i++){
+//     var row = `<tr>
+//             <td>${data[i].name}</td>
+//             <td>${data[i].rollNo}</td>
+//             <td>${data[i].class}</td>
+//             <td>${data[i].gender}</td>
+//             <td>${data[i].dob}</td>
+//             <td>${data[i].arrears}</td>
+//             <td>${data[i].percentage}</td>
+//             <td>${data[i].rank}</td>
+//             <td>${data[i].involvedInSports}</td>
+//             <td>${data[i].appliedScholorship}</td>
+//             <td>${data[i].passedOut}</td>
+//           </tr>`
+//     table.innerHTML += row
 
 
-  }
-}
+//   }
+// }

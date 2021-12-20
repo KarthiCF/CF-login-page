@@ -31,8 +31,8 @@
           <h1 class="text-center text-success mt-4 mb-1 mx-4" ><strong>USER DETAILS</strong></h1>
           <br>
         </div>  
-        <div class=" d-flex justify-content-center">
-          <form class=" w-50  DataForm">
+        <div id="form" class=" d-flex justify-content-center" >
+          <form id="form" class=" w-50  DataForm">
               <input type="text" class="form-control m-2" placeholder="First Name" autocomplete="off" id="fname">
               <input type="text" class="form-control m-2" placeholder="Last Name" autocomplete="off" id="lname">
               <input type="text" class="form-control m-2" placeholder="User Name" autocomplete="off" id="uname">
@@ -45,10 +45,10 @@
           
         </div>
         <div class="d-flex justify-content-center mt-2 mb-4">
-          <button class="btn btn-success text-center">Add</button>
+          <button class="btn btn-warning text-center">Update</button>
         </div>
       </div>
-          <table class="table table-bordered table-striped" id="display">
+          <table class="table table-bordered table-striped" id="table">
             <tr class="bg-primary text-white" >
               <th>S.NO</th>
               <th>FIRST NAME</th>
@@ -77,22 +77,23 @@
   <script>
     var n = 1;
     var x = 0;
-    
+    editFname = document.getElementById('fname');
+    editLname = document.getElementById('lname');
+    editUname = document.getElementById('uname');
+    editPhone = document.getElementById('phone');
+    editEmail = document.getElementById('mail');
+    const storedInfo = localStorage.getItem('User_Info'); 
+    const storedInfoArray = JSON.parse(storedInfo)
+   
+    var table = document.getElementById('table'),rIndex,cIndex;
+
     displayDetails();
-    dd();
+    delbtn = document.getElementById('btndel')
+         
   
-    function displayDetails(){
-    
-      const storedInfo = localStorage.getItem('User_Info'); 
-      const storedInfoArray = JSON.parse(storedInfo)
-
-
-     
-  
+    function displayDetails(){                             
       
-      
-      var display = document.getElementById('display')
-      var newRow = display.insertRow(n)
+      var newRow = table.insertRow(n)
 
       var cell1 = newRow.insertCell(0);
       var cell2 = newRow.insertCell(1);
@@ -112,35 +113,71 @@
       cell4.innerHTML = storedInfoArray[x].user_name
       cell5.innerHTML = storedInfoArray[x].phone_number
       cell6.innerHTML = storedInfoArray[x].email_address
-      cell7.innerHTML = '<td ><i class="fas fa-edit" id="btnedit" ></i></td>'
+      cell7.innerHTML = '<td ><i class="fas fa-edit" id="btnedit" onclick="editz()"></i></td>'
       cell8.innerHTML = '<td ><i class="fas fa-trash-alt" id="btndel" onclick="dd()" ></i></td>'
-      // console.log("Row index is: " + n)
-      // console.log("length" + display.rows.length)
+
       n++;
       x++;
-      // console.log("down " + n)
-      // console.log("down " + x)
-      // console.log(storedInfoArray[x].user_name)
-      // console.log(localStorage.getItem('User_Info'))
-      // console.log(storedInfoArray.length)
+     
 
       
+      // using 'if' statement to stop the error 'storedInfoArray[x] is undefined' and to avoid an empty row at the end. //
+      if(storedInfoArray[x] === undefined){
+        return; 
+      }
+      else{
+        
+        
+        displayDetails()  // AGAIN CALLING THIS FUNCTION FOR INSERTING  NEXT ROW //
+      
+        console.log("Success")
     
-      displayDetails();  // AGAIN CALLING THIS FUNCTION FOR INSERTING TO NEXT ROW (with m)
-   
-      dd();
-    }
-    function dd(){
-      console.log("Row index is: " + n)
-      document.getElementById("display").deleteRow(n)
-      console.log(n)
-      console.log(x)                                
+      };                     
     };
-   
+
+  for(var i = 1; i < table.rows.length; i++)
+    {
+        // row cells
+        for(var j = 0; j < table.rows[i].cells.length; j++)
+        {
+            table.rows[i].cells[j].onclick = function()
+            {
+                rIndex = this.parentElement.rowIndex;
+                cIndex = this.cellIndex+1;
+                console.log("Row : "+rIndex+" , Cell : "+cIndex);                                                                                                     
+            };
+        };
+    };
+    function dd(){     
+     
+      for(var i = 1; i < table.rows.length; i++)
+      {
+        // row cells
+        for(var j = 0; j < table.rows[i].cells.length; j++)
+        {
+            table.rows[i].cells[j].onclick = function()
+            {
+                rIndex = this.parentElement.rowIndex;
+                cIndex = this.cellIndex+1;
+                document.getElementById("table").deleteRow(rIndex)                                                                
+                
+            };
+        };
+      } ;
+                                  
+    };
     
+    function editz(){
+      
+      editFname.value= storedInfoArray[rIndex-1].first_name
+      editLname.value = storedInfoArray[rIndex-1].last_name
+      editUname.value = storedInfoArray[rIndex-1].user_name
+      editPhone.value = storedInfoArray[rIndex-1].phone_number
+      editEmail.value = storedInfoArray[rIndex-1].email_address
+      };
+  
 </script>
   
 </html>
 
 
-<!-- onclick="delrow()" -->

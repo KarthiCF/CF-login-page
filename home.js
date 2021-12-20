@@ -59,6 +59,8 @@ var signupBtn = document.querySelector('#signupButton');
 
 
 
+
+
 signupBtn.addEventListener("click", function(event){
  
   if(fname.value !== "" && lname.value !== "" && uname.value !== "" &&
@@ -93,20 +95,11 @@ signupBtn.addEventListener("click", function(event){
 
     let oldFname = JSON.parse(localStorage.getItem('User_Info'));
     oldFname.push(user_credentials);
-
     
-
     localStorage.setItem('User_Info', JSON.stringify(oldFname))
     
     
-  }
-
-  
-
-
- 
-  
- 
+  }     
 });
 
 

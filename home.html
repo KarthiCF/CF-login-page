@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -45,7 +46,7 @@
           
         </div>
         <div class="d-flex justify-content-center mt-2 mb-4">
-          <button class="btn btn-warning text-center">Update</button>
+          <button class="btn btn-warning text-center" id="updatebtn">Update</button>
         </div>
       </div>
           <table class="table table-bordered table-striped" id="table">
@@ -85,10 +86,12 @@
     const storedInfo = localStorage.getItem('User_Info'); 
     const storedInfoArray = JSON.parse(storedInfo)
    
-    var table = document.getElementById('table'),rIndex,cIndex;
+    var table = document.getElementById('table');
+    var updateButton = document.getElementById('updatebtn')
 
     displayDetails();
     delbtn = document.getElementById('btndel')
+    console.log(storedInfoArray)
          
   
     function displayDetails(){                             
@@ -113,8 +116,8 @@
       cell4.innerHTML = storedInfoArray[x].user_name
       cell5.innerHTML = storedInfoArray[x].phone_number
       cell6.innerHTML = storedInfoArray[x].email_address
-      cell7.innerHTML = '<td ><i class="fas fa-edit" id="btnedit" onclick="editz()"></i></td>'
-      cell8.innerHTML = '<td ><i class="fas fa-trash-alt" id="btndel" onclick="dd()" ></i></td>'
+      cell7.innerHTML = '<td ><i class="fas fa-edit" id="btnedit" onclick="editRow(this)"></i></td>'
+      cell8.innerHTML = '<td ><i class="fas fa-trash-alt" id="btndel" onclick="deleteTheRow(this)" ></i></td>'
 
       n++;
       x++;
@@ -130,54 +133,81 @@
         
         displayDetails()  // AGAIN CALLING THIS FUNCTION FOR INSERTING  NEXT ROW //
       
-        console.log("Success")
+     
     
       };                     
     };
 
-  for(var i = 1; i < table.rows.length; i++)
-    {
-        // row cells
-        for(var j = 0; j < table.rows[i].cells.length; j++)
-        {
-            table.rows[i].cells[j].onclick = function()
-            {
-                rIndex = this.parentElement.rowIndex;
-                cIndex = this.cellIndex+1;
-                console.log("Row : "+rIndex+" , Cell : "+cIndex);                                                                                                     
-            };
-        };
-    };
-    function dd(){     
+  // for(var i = 1; i < table.rows.length; i++)
+  //   {
+  //       // row cells
+  //       for(var j = 0; j < table.rows[i].cells.length; j++)
+  //       {
+  //           table.rows[i].cells[j].onclick = function()
+  //           {
+  //               rIndex = this.parentElement.rowIndex;
+  //               cIndex = this.cellIndex+1;
+  //               console.log("Row : "+rIndex+" , Cell : "+cIndex);                                                                                                     
+  //           };
+  //       };
+  //   };
+    function deleteTheRow(obj){     
+      var delRowSelect = obj.parentNode.parentNode.rowIndex;
+      console.log(delRowSelect)
+      
+      table.deleteRow(delRowSelect)
+      console.log(JSON.parse(localStorage.getItem('User_Info'))[delRowSelect - 1])
+  
+      storedInfoArray[delRowSelect - 1].deleteRow
+      console.log(storedInfoArray)
      
-      for(var i = 1; i < table.rows.length; i++)
-      {
-        // row cells
-        for(var j = 0; j < table.rows[i].cells.length; j++)
-        {
-            table.rows[i].cells[j].onclick = function()
-            {
-                rIndex = this.parentElement.rowIndex;
-                cIndex = this.cellIndex+1;
-                document.getElementById("table").deleteRow(rIndex)                                                                
-                
-            };
-        };
-      } ;
-                                  
+     
+                          
     };
     
-    function editz(){
+    function editRow(obj){
+      event.preventDefault();
+      var selectedRow = obj.parentNode.parentNode.rowIndex; // this returns the selected row index
+      console.log("Row no : " + selectedRow)
+
+      // 
+      editFname.value = table.rows[selectedRow].cells[1].innerHTML;
+      editLname.value = table.rows[selectedRow].cells[2].innerHTML;
+      editUname.value = table.rows[selectedRow].cells[3].innerHTML;
+      editPhone.value = table.rows[selectedRow].cells[4].innerHTML;
+      editEmail.value = table.rows[selectedRow].cells[5].innerHTML;
+
+      updateButton.addEventListener("click", function(){
+        if(editFname.value !== '' && editLname.value !== "" && editUname.value !== "" && editPhone.value !== "" && editEmail.value !== ""  ){
+                     
+          storedInfoArray[selectedRow - 1].first_name = editFname.value
+          storedInfoArray[selectedRow - 1].last_name = editLname.value
+          storedInfoArray[selectedRow - 1].user_name = editUname.value
+          storedInfoArray[selectedRow - 1].phone_number =  editPhone.value
+          storedInfoArray[selectedRow - 1].email_address = editEmail.value
+
+          console.log(storedInfoArray)
+          localStorage.setItem('User_Info', JSON.stringify(storedInfoArray))
+        }
+        else{
+          alert("Please fill the unfilled entries!")
+          console.log(editFname.value)
+        }
+
+       
+      })
+
+      // editFname.value= storedInfoArray[rIndex-1].first_name
+      // editLname.value = storedInfoArray[rIndex-1].last_name
+      // editUname.value = storedInfoArray[rIndex-1].user_name
+      // editPhone.value = storedInfoArray[rIndex-1].phone_number
+      // editEmail.value = storedInfoArray[rIndex-1].email_address
+
       
-      editFname.value= storedInfoArray[rIndex-1].first_name
-      editLname.value = storedInfoArray[rIndex-1].last_name
-      editUname.value = storedInfoArray[rIndex-1].user_name
-      editPhone.value = storedInfoArray[rIndex-1].phone_number
-      editEmail.value = storedInfoArray[rIndex-1].email_address
       };
   
 </script>
   
 </html>
 
-
+   

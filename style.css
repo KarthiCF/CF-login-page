@@ -42,10 +42,46 @@
   cursor: pointer;
 }
 
-/* .DataForm {
+.todoForm {
   background-color: rgba(22, 22, 24, 0.739);
-  margin: 5px;
-  padding: 4px;
+  margin: 2px;
   margin-bottom: 20px;
   border-radius: 5px;
-} */
+  justify-content: space-between;
+}
+
+.todoList p {
+  text-align: left;
+  position: relative;
+  list-style: none;
+  margin-bottom: 8px;
+  background: rgb(255, 255, 255);
+  border-radius: 3px;
+  padding: 10px 15px;
+  cursor: default;
+  word-wrap: break-word;
+}
+
+.todoList p .icon {
+  position: absolute;
+  right: -45px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 100%;
+  color: rgb(0, 0, 0);
+  background-color: rgb(179, 46, 46);
+  padding: 10px 15px;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+  display: none;
+  transition: all 0.1s ease;
+}
+.todoList p:hover .icon {
+  right: 0px;
+
+  display: block;
+}
+.check-input {
+  height: 100%;
+}

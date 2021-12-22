@@ -264,19 +264,19 @@ var studentDetail = [
 //   var table = document.getElementById('myTable')
 //   table.innerHTML = ''
 //   for (var i = 0; i < data.length; i++){
-//     var row = `<tr>
-//             <td>${data[i].name}</td>
-//             <td>${data[i].rollNo}</td>
-//             <td>${data[i].class}</td>
-//             <td>${data[i].gender}</td>
-//             <td>${data[i].dob}</td>
-//             <td>${data[i].arrears}</td>
-//             <td>${data[i].percentage}</td>
-//             <td>${data[i].rank}</td>
-//             <td>${data[i].involvedInSports}</td>
-//             <td>${data[i].appliedScholorship}</td>
-//             <td>${data[i].passedOut}</td>
-//           </tr>`
+    // var row = `<tr>
+    //         <td>${data[i].name}</td>
+    //         <td>${data[i].rollNo}</td>
+    //         <td>${data[i].class}</td>
+    //         <td>${data[i].gender}</td>
+    //         <td>${data[i].dob}</td>
+    //         <td>${data[i].arrears}</td>
+    //         <td>${data[i].percentage}</td>
+    //         <td>${data[i].rank}</td>
+    //         <td>${data[i].involvedInSports}</td>
+    //         <td>${data[i].appliedScholorship}</td>
+    //         <td>${data[i].passedOut}</td>
+    //       </tr>`
 //     table.innerHTML += row
 
 

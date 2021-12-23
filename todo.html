@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/84293646a5.js" crossorigin="anonymous"></script>
     
         
-    
+    <link rel="icon" href="image/cf_icon.png">
     <title>TO DO</title>
     <link rel="stylesheet" href="style.css">
   </head>
@@ -26,9 +26,14 @@
             <div class="col-auto">
               <button class="btn btn-primary" id="addBtn">Add</button>
             </div>
-              
-            <div class="">
+            <div>
+              <hr style="color: rgb(168, 168, 168); height: 2px; opacity: 100%;">
+            </div>
+           
+            
+            <div class="container">
               <p class=" todoList" id="dothis"></p>
+              
             </div>
         </form>
 
@@ -46,6 +51,10 @@
       var ToDoform = document.getElementById('ToDoform')
       const getToDo = localStorage.getItem('ToDo')
       const ToDoArray = JSON.parse(getToDo)
+      var checkBoxToDo = document.getElementById('checkBox');
+      
+
+      
       
       AddButton.addEventListener("click", function(event){
           if(ToDo.value !== ''){
@@ -58,25 +67,52 @@
           else{
               alert("not selected")
           };
+
+          
           
       });
+
+     
       
       function storeToDo(){
           var ToDo = document.getElementById('enterToDo')
           if(localStorage.getItem('ToDo') === null){
               localStorage.setItem('ToDo', '[]');
+              window.location.reload()
           };
           
           ToDoArray.push(ToDo.value);
           localStorage.setItem('ToDo',JSON.stringify(ToDoArray))
+         
         };
 
       listLoop()
       function listLoop(){
         for (var l = 0; l < ToDoArray.length; l++){
-          var row = `<p><input class="checkBoxC" type="checkbox"  id="checkBox" >&nbsp${ToDoArray[l]}<span class="icon" ><i class="icon fas fa-trash-alt" onclick="deleteToDo(this)"></i></span></p>`
+          var row = `<p class="newlist"><input class="checkBoxC" type="checkbox"  id="checkBox" >&nbsp${ToDoArray[l]}<span class="icon" ><i class="icon fas fa-trash-alt" onclick="deleteToDo(this)"></i></span></p>`
           ToDoList.innerHTML += row};     
+          var newlist = document.querySelector('.newlist')
         };
+
+        function deleteToDo(obj){
+          var indexing = obj.parentNode.parentNode.rowIndex
+          var newlist = document.querySelector('.newlist')
+          newlist.remove()
+          console.log(indexing)
+          // let getLocalStorageData = localStorage.getItem("New Todo");
+          // // listArray = JSON.parse(getLocalStorageData);
+          // ToDoArray.splice(index, 1); //delete or remove the li
+          // localStorage.setItem("New Todo", JSON.stringify(ToDoArray));
+          // storeToDo() //call the showTasks function
+
+        }
+        function check(){
+           if(document.getElementById("checkBox").checked){
+             console.log("checked")
+      }
+        }
+      
+        
      
   </script>
 </html>

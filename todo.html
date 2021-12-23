@@ -31,10 +31,15 @@
             </div>
            
             
-            <div class="container">
-              <p class=" todoList" id="dothis"></p>
+           
+              <!-- <p class=" todoList" id="tableToDo"></p> -->
+              <table class="todoList table-bordered table-striped" id="tableToDo">
+                <tr class="bg-white text-black">
+                  
+                </tr>
+              </table>
               
-            </div>
+            
         </form>
 
       </section>
@@ -47,13 +52,15 @@
   <script>
       var AddButton = document.getElementById('addBtn')
       var ToDo = document.getElementById('enterToDo')
-      var ToDoList = document.getElementById('dothis')
+      var ToDoList = document.getElementById('tableToDo')
       var ToDoform = document.getElementById('ToDoform')
       const getToDo = localStorage.getItem('ToDo')
-      const ToDoArray = JSON.parse(getToDo)
+      const ToDoArray = JSON.parse(getToDo) === null ? [] :  JSON.parse(getToDo)
       var checkBoxToDo = document.getElementById('checkBox');
+    
+  
       
-
+      listLoop()
       
       
       AddButton.addEventListener("click", function(event){
@@ -61,58 +68,57 @@
               event.preventDefault();
               event.stopPropagation();
               storeToDo();
-              window.location.reload()
+              listLoop();
+              window.location.reload();
               ToDoform.reset()                        
           }
           else{
               alert("not selected")
           };
 
-          
-          
       });
 
      
       
       function storeToDo(){
           var ToDo = document.getElementById('enterToDo')
-          if(localStorage.getItem('ToDo') === null){
-              localStorage.setItem('ToDo', '[]');
-              window.location.reload()
-          };
-          
           ToDoArray.push(ToDo.value);
           localStorage.setItem('ToDo',JSON.stringify(ToDoArray))
          
         };
 
-      listLoop()
-      function listLoop(){
+      //----------- This function creates a new row when a new ToDO is added in the input field ----------------
+      function listLoop(){                
         for (var l = 0; l < ToDoArray.length; l++){
-          var row = `<p class="newlist"><input class="checkBoxC" type="checkbox"  id="checkBox" >&nbsp${ToDoArray[l]}<span class="icon" ><i class="icon fas fa-trash-alt" onclick="deleteToDo(this)"></i></span></p>`
-          ToDoList.innerHTML += row};     
-          var newlist = document.querySelector('.newlist')
+          var row = `<td class="newlist text-black bg-white p-3 mt-1">${ToDoArray[l]}<span class="icon" ><i class="icon fas fa-trash-alt" onclick="deleteToDo(this)"></i></span></td>`
+          
+          ToDoList.innerHTML += row};                        
         };
 
-        function deleteToDo(obj){
-          var indexing = obj.parentNode.parentNode.rowIndex
-          var newlist = document.querySelector('.newlist')
-          newlist.remove()
-          console.log(indexing)
-          // let getLocalStorageData = localStorage.getItem("New Todo");
-          // // listArray = JSON.parse(getLocalStorageData);
-          // ToDoArray.splice(index, 1); //delete or remove the li
-          // localStorage.setItem("New Todo", JSON.stringify(ToDoArray));
-          // storeToDo() //call the showTasks function
+        // --------- This function deletes the selected row content in table and local storage also ----------------
+        function deleteToDo(obj){          
+          var ToDoRowNumber = obj.parentNode.parentNode.parentNode.rowIndex; // var 'ToDoRowNumber' returns index of selected row
+          
+          //-----------To delete the selected todo, splice is used here --------
+          ToDoArray.splice((ToDoRowNumber -1), 1);
+          // ---------- The above line deletes the row, but doesn't delete in local storage. So to delete in local storage also, set the local storage value again with this above array ----------------
+          localStorage.setItem('ToDo',JSON.stringify(ToDoArray))
+          window.location.reload();
+          
+        };
 
-        }
-        function check(){
-           if(document.getElementById("checkBox").checked){
-             console.log("checked")
-      }
-        }
+      //   function check(){
+      //      if(document.getElementById("checkBox").checked){
+      //        console.log("checked")
+      // }
+      //   }
       
         
      
   </script>
+  
+
 </html>
+
+
+

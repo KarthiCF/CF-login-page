@@ -50,7 +50,7 @@
   justify-content: space-between;
 }
 
-.todoList p {
+/* .todoList p {
   text-align: left;
   position: relative;
   list-style: none;
@@ -60,28 +60,10 @@
   padding: 10px 15px;
   cursor: default;
   word-wrap: break-word;
-}
+} */
 
-.todoList p .icon {
-  position: absolute;
-  right: -45px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 45px;
-  height: 100%;
-  color: rgb(0, 0, 0);
-  background-color: rgb(179, 46, 46);
-  padding: 10px 15px;
-  border-radius: 0 3px 3px 0;
+.todoList td .icon {
   cursor: pointer;
-  display: none;
-  transition: all 0.1s ease;
-}
-.todoList p:hover .icon {
-  right: 0px;
 
-  display: block;
-}
-.check-input {
-  height: 100%;
+  position: relative;
 }

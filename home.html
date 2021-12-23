@@ -157,7 +157,9 @@
       console.log(delRowSelect)
       
       table.deleteRow(delRowSelect)
-      console.log(JSON.parse(localStorage.getItem('User_Info'))[delRowSelect - 1])
+      storedInfoArray.splice(delRowSelect, 1)
+      localStorage.setItem('User_Info', JSON.stringify(storedInfoArray));
+
   
      
       console.log(storedInfoArray)

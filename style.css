@@ -43,10 +43,11 @@
 }
 
 .todoForm {
-  background-color: rgba(22, 22, 24, 0.739);
+  background-color: rgba(255, 255, 255, 0.6);
   margin: 2px;
   margin-bottom: 20px;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
   justify-content: space-between;
 }
 
@@ -65,5 +66,32 @@
 .todoList td .icon {
   cursor: pointer;
 
+  background-color: rgb(245, 84, 84);
+  border-radius: 5px;
+
+  color: black;
+  padding: 5px;
+  height: auto;
+  width: auto;
   position: relative;
+}
+.todoList td :hover {
+  background-color: black;
+  color: rgb(245, 84, 84);
+}
+#summaryId {
+  border-radius: 5px;
+
+  align-content: center;
+}
+#enterToDo,
+#addBtn {
+  border-radius: 20px;
+}
+#tableToDo {
+  border-top: white;
+  border-bottom: white;
+  border-right: white;
+  border-left: white;
+  background-color: rgba(0, 191, 255, 0.1);
 }

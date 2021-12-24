@@ -8,23 +8,25 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/84293646a5.js" crossorigin="anonymous"></script>
-    
-        
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">    
     <link rel="icon" href="image/cf_icon.png">
     <title>TO DO</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <section class="ToDoMain" style="background: linear-gradient(to bottom,rgb(65, 65, 155) 0%, rgb(2, 2, 2) 100%); height: auto; width:100%">
+    <section class="ToDoMain" style=" height: auto; width:100%">
      <div class="container-sm py-4 px-5">
-        <h1 class="text-center text-white">TO DO</h1>
-        <form class="todoForm row g-3  mt-2 mb-4 p-4 text-center" style="max-width: 480px; margin: auto;" id="ToDoform">          
+      <h1 class="text-center text-black"><strong>TO DO LIST</strong></h1>
+        <form class="todoForm row g-3  mt-2 mb-4 p-4 mt-4 text-center" style="max-width: 480px; margin: auto;" id="ToDoform">          
             
             <div class="col mx-0">
-              <input id="enterToDo" type="text" name="todo" class="form-control"  placeholder="Add new To do" required>
+              <input id="enterToDo" type="text" name="todo" class="form-control"  placeholder="Add new " required>
             </div>
             <div class="col-auto">
-              <button class="btn btn-primary" id="addBtn">Add</button>
+              <button class="btn btn-primary" id="addBtn"><i class="fas fa-plus"></i></button>
             </div>
             <div>
               <hr style="color: rgb(168, 168, 168); height: 2px; opacity: 100%;">
@@ -33,11 +35,14 @@
             
            
               <!-- <p class=" todoList" id="tableToDo"></p> -->
-              <table class="todoList table-bordered table-striped" id="tableToDo">
-                <tr class="bg-white text-black">
+              <table class="todoList table-responsive table-striped  table-bordered" id="tableToDo">
+                <tr  class="  " id="tableRowToDO">
                   
                 </tr>
               </table>
+              <div class="lastSummary" id="summary">
+                <!-- <p class="text-white">summary</p> -->
+              </div>
               
             
         </form>
@@ -54,45 +59,63 @@
       var ToDo = document.getElementById('enterToDo')
       var ToDoList = document.getElementById('tableToDo')
       var ToDoform = document.getElementById('ToDoform')
+      var Summary = document.getElementById('summary')
       const getToDo = localStorage.getItem('ToDo')
       const ToDoArray = JSON.parse(getToDo) === null ? [] :  JSON.parse(getToDo)
       var checkBoxToDo = document.getElementById('checkBox');
     
-  
       
-      listLoop()
+
+     
       
       
       AddButton.addEventListener("click", function(event){
-          if(ToDo.value !== ''){
+          if(ToDo.value !== '' ){
               event.preventDefault();
               event.stopPropagation();
-              storeToDo();
-              listLoop();
-              window.location.reload();
-              ToDoform.reset()                        
+              onlyNewEntries();
+              ToDoform.reset() 
+              
           }
           else{
-              alert("not selected")
+              alert("Input field is empty")
           };
 
       });
+      function onlyNewEntries(){
 
-     
+        for( var i = 0; i < ToDoArray.length; i++){ 
+    
+          if (ToDoArray[i] === ToDo.value) {
+            console.log(ToDoArray[i])
+            alert("already availabe")
+            return; //Do use return here to stop the function
+            
+          }
+
+        };
+        storeToDo();               
+        window.location.reload()
+        
+       
+      };
+      listLoop();
       
       function storeToDo(){
           var ToDo = document.getElementById('enterToDo')
           ToDoArray.push(ToDo.value);
           localStorage.setItem('ToDo',JSON.stringify(ToDoArray))
-         
+          
         };
-
+      
       //----------- This function creates a new row when a new ToDO is added in the input field ----------------
       function listLoop(){                
         for (var l = 0; l < ToDoArray.length; l++){
-          var row = `<td class="newlist text-black bg-white p-3 mt-1">${ToDoArray[l]}<span class="icon" ><i class="icon fas fa-trash-alt" onclick="deleteToDo(this)"></i></span></td>`
+          var row = `<td ALIGN=left class="newlist text-black   p-3 mt-1" id="tdId"><span class="icon" ><i class="icon fas fa-trash-alt" onclick="deleteToDo(this)"></i></span>&nbsp&nbsp${ToDoArray[l]}</td>`
           
-          ToDoList.innerHTML += row};                        
+          ToDoList.innerHTML += row}; 
+        var summary = `<p class="text-success" id="summaryId">${l}&nbsp Tasks remaining</p>`  
+        Summary.innerHTML += summary                         
         };
 
         // --------- This function deletes the selected row content in table and local storage also ----------------
@@ -105,15 +128,10 @@
           localStorage.setItem('ToDo',JSON.stringify(ToDoArray))
           window.location.reload();
           
-        };
-
-      //   function check(){
-      //      if(document.getElementById("checkBox").checked){
-      //        console.log("checked")
-      // }
-      //   }
-      
         
+        };
+        
+      
      
   </script>
   

@@ -66,18 +66,18 @@
 .todoList td .icon {
   cursor: pointer;
 
-  background-color: rgb(245, 84, 84);
+  background-color: rgb(0, 57, 148);
   border-radius: 5px;
 
-  color: black;
+  color: rgb(255, 255, 255);
   padding: 5px;
   height: auto;
   width: auto;
   position: relative;
 }
 .todoList td :hover {
-  background-color: black;
-  color: rgb(245, 84, 84);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 57, 148);
 }
 #summaryId {
   border-radius: 5px;
@@ -94,4 +94,60 @@
   border-right: white;
   border-left: white;
   background-color: rgba(0, 191, 255, 0.1);
+}
+#noteText {
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
+  display: contents;
+}
+#note {
+  /* box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px; */
+  border: 0;
+  /* cursor: pointer; */
+  background-color: rgb(47, 50, 53);
+  /* border-radius: 8px; */
+  border: none;
+}
+
+#textAreaForm {
+  /* remove below two lines to get normal box */
+
+  background-color: #0dcaf0;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+#formBtn {
+  padding-bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  size: 25%;
+}
+#saveBtn {
+  padding-left: 10px;
+  padding-right: 5px;
+  padding-top: 7px;
+  padding-bottom: 3px;
+}
+#closeBtn {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-top: 7px;
+  padding-bottom: 3px;
+}
+.notesList td .icon {
+  cursor: pointer;
+
+  border-radius: 5px;
+
+  color: #0dcaf0;
+  padding: 5px;
+  height: auto;
+  width: auto;
+  position: relative;
+}
+#tdId {
+  max-width: 40px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }

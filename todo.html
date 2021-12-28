@@ -44,6 +44,7 @@
                 <!-- <p class="text-white">summary</p> -->
               </div>
               
+              
             
         </form>
 
@@ -86,7 +87,7 @@
 
         for( var i = 0; i < ToDoArray.length; i++){ 
     
-          if (ToDoArray[i] === ToDo.value) {
+          if (ToDoArray[i] === ToDo.value.trim() ) {
             console.log(ToDoArray[i])
             alert("already availabe")
             return; //Do use return here to stop the function
@@ -127,7 +128,7 @@
           // ---------- The above line deletes the row, but doesn't delete in local storage. So to delete in local storage also, set the local storage value again with this above array ----------------
           localStorage.setItem('ToDo',JSON.stringify(ToDoArray))
           window.location.reload();
-          
+          console.log(ToDoRowNumber)
         
         };
         

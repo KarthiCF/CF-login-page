@@ -20,21 +20,19 @@
     <section class="container-sm notesMain" style=" height: auto; width:100% ">
      <div class="container-sm py-4 px-5">
       <!-- <h1 class="text-center text-black"><strong>STICKY NOTES</strong></h1> -->
-        <form class="todoForm row g-3  mt-2 mb-4 p-0 bg-dark mt-4 text-center" style="max-width: fit-content; min-width:fit-content; margin: auto;" id="ToDoform">          
+        <form class="todoForm row g-3  mt-2 mb-4 p-4 bg-dark mt-4 text-center" style="max-width: fit-content; min-width:fit-content;  margin: auto;" id="ToDoform">          
             
-            <div class=" text-info m-2 mb-5" >
-             <h1><b>STICKY NOTES</b> <span><button class="btn  " id="btnAddNote"><i class="fas fa-plus text-black bg-warning p-2"></i></button></span></h1>
+            <div class=" text-white m-2 mb-5=3" >
+             <h1><strong>STICKY NOTES</strong> <span><button class="btn  " id="btnAddNote"><i class="fas fa-plus text-black bg-info p-2"></i></button></span></h1>
             </div>
-            <div class="col-auto">
-              
-            </div>
-            <!-- <div>
+  
+         
+            <div>
               <hr style="color: rgb(168, 168, 168); height: 2px; opacity: 100%;">
-            </div> -->
+            </div>
            
-            
-           
-              <!-- <p class=" notesList" id="tableNotes"></p> -->
+
+             
               <table class="notesList table-responsive table-striped  table-bordered" id="tableNotes">
                 <tr  class="max-width=5" id="tableRowToDO">
                   
@@ -42,25 +40,16 @@
               </table>
 
 
-               <div class="lastSummary" id="summaryNote">
-                <!-- <p class="text-black">summaryNote</p> -->
+              <div class="lastSummary" id="summaryNote">
+                <!-- <p class="text-info">summaryNote</p> -->
               </div>
                
               
             
         </form>
-        <div class=" " id="noteText">
+        <div class="container" id="noteText">
           
-          <!-- <textarea class="m-4" name="notes" id="note" cols="30" rows="10"></textarea>
-          <textarea class="m-4" name="notes" id="note" cols="30" rows="10"></textarea>
-          <textarea class="m-4" name="notes" id="note" cols="30" rows="10"></textarea>
-          <textarea class="m-4" name="notes" id="note" cols="30" rows="10"></textarea>
-          <textarea class="m-4" name="notes" id="note" cols="30" rows="10"></textarea>
-          <textarea class="m-4" name="notes" id="note" cols="30" rows="10"></textarea>
-          <textarea class="m-4" name="notes" id="note" cols="30" rows="10"></textarea> -->
-
-
-
+          
           <!-- <form class="form-control m-1 p-0" style="max-width: fit-content; min-width:fit-content;  margin: auto; "  id="textAreaForm">
             <div class="formBtn" style="height: fit-content;" id="formBtn" >
               <i class="fas fa-check" title="save" class="saveBtn p-1 mx-2" id="saveBtn"></i>
@@ -72,7 +61,6 @@
           
 
         </div>
-        
 
       </section>
    
@@ -82,40 +70,31 @@
     
   </body>
   <script>
-      var AddButton = document.getElementById('btnAddNote')
-      var table = document.getElementById('tableNotes')
-      var notesList = document.getElementById('tableNotes')
-      var ToDoform = document.getElementById('ToDoform')
+      var AddButton = document.getElementById('btnAddNote');
+      var table = document.getElementById('tableNotes');
+      var notesList = document.getElementById('tableNotes');
+      var ToDoform = document.getElementById('ToDoform');
      
-      var getNotes = localStorage.getItem('notes')
-      var notesArray = JSON.parse(getNotes) === null ? [] :  JSON.parse(getNotes)
+      var getNotes = localStorage.getItem('notes');
+      var notesArray = JSON.parse(getNotes) === null ? [] :  JSON.parse(getNotes);
       
-      var newNote = document.getElementById('noteText')
-      var NotesContent = document.getElementById('note')
-      var buttonClose = document.getElementById('closeBtn')
-      var buttonSave = document.getElementById('saveBtn')
-      var closeForm = document.getElementById('textAreaForm')
-      
-    // $(document).ready(function(){
-    //   var id = 1;
-    //   $('#btnAddNote').click(function(){
-    //     var StickyNotes = $(`<textarea class=" container-sm m-4" name="notes" id="note" cols="30" rows="10"></textarea>`);
-    //     id++;
-    //     $('#noteText').append(StickyNotes)
-    //   })
-    // })
+      var newNote = document.getElementById('noteText');
+      var NotesContent = document.getElementById('note');
+    
+      var buttonSave = document.getElementById('saveBtn');
+      var closeForm = document.getElementById('textAreaForm');
+      var Summary = document.getElementById('summaryNote');
+
+      listLoop();
      
       AddButton.addEventListener("click", function(event){
-        // alert("hui")
-              // event.preventDefault();
-              // event.stopPropagation();
-              // onlyNewEntries();
-              // ToDoform.reset() 
-        AddNote()
+        AddNote();
         event.preventDefault();
         event.stopPropagation();
+        
       });
-    
+      
+      // open the new form when add button is clicked
       function AddNote(){
             
         var StickyNotes = `<form class="container-sm form-control m-1 p-0" style="max-width: fit-content; min-width:fit-content;  margin: auto; "  id="textAreaForm">
@@ -128,108 +107,93 @@
         newNote.innerHTML = StickyNotes
         
         
-      }
-     
-      function AreaText(){
-        alert("clicked")
-       console.log(NotesContent.textContent)
-      }
-     
+      };
+
+      
+
+      
       function closee(){
-        // alert("closed")
-        document.getElementById('textAreaForm').style.display="none"
+        document.getElementById('textAreaForm').style.display="none";
+      };
+
+      function saveNote(){              
+        var  NotesContent = document.getElementById('note');
+        var rowIndexDBClick = notesArray.indexOf(NotesContent.value);
+
+        if(NotesContent.value.trim() !== ""){
+          notesArray[rowIndexDBClick] = NotesContent.value;
+          notesArray.push( NotesContent.value);
         
-        window.location.reload()
-        
-       
+          localStorage.setItem('notes', JSON.stringify(notesArray))  ;         
+         
+          window.location.reload();
+         
+        }else{
+          alert("Empty note cannot be stored");
+        };                
+      };
+  
 
-      }
-
-      function saveNote(){
-        // alert("saved")
-        window.location.reload()
-        var noteval = document.getElementById('note')
-        console.log(noteval.value)
-        notesArray.push(noteval.value)
-       
-       
-        localStorage.setItem('notes', JSON.stringify(notesArray))
-        document.getElementById('textAreaForm').style.display="block`" 
-      }
+  
      
+      function editNote(obj){
+       
+        var notesRownNumber = obj.parentNode.rowIndex;
+     
+        // opens the existing form when double clicked
+        var openExistingNote = `<form  class=" container-sm form-control m-1 p-0" style="max-width: fit-content; min-width:fit-content;  margin: auto; "  id="textAreaForm">
+            <div class="formBtn" style="height: fit-content;" id="formBtn" >
+              <i class="fas fa-check" title="save" class="saveBtnEdit p-1 mx-2" id="saveBtnEdit" ></i>
+              <i class="fas fa-times" title="close" class="closeBtnEdit p-1 mx-2" id="closeBtnEdit" onclick="closee()"></i>
+            </div>
+            <div class=" areaText"><textarea class="mt-1 text-white" name="notes" id="note" cols="30" rows="10"></textarea></div>
+          </form>`
+        newNote.innerHTML =  openExistingNote;
+
+        var buttonSaveEdit = document.getElementById('saveBtnEdit');
+        const editTheNote = document.getElementById('note');
+        editTheNote.value = notesArray[notesRownNumber-1];        
+             
+        buttonSaveEdit.addEventListener("click", function(){
+          if(editTheNote.value.trim() !== ""){
+  
+            notesArray[notesRownNumber - 1] = editTheNote.value;
+            localStorage.setItem('notes', JSON.stringify(notesArray)) ;
+            window.location.reload();
+          }else{
+            alert("Empty note cannot be stored")
+          };
+          
+        });
+
+      };
+
      
       
 
-      // buttonSave.addEventListener('click', function(s){
-      //   alert("saved")
-      //   window.location.reload()
-      //   var noteval = document.getElementById('note')
-      //   console.log(noteval.value)
-      //   notesArray.push(noteval.value)
-      //   localStorage.setItem('notes', JSON.stringify(notesArray))
-        
-      // })
-      
 
-      
-     
-      listLoop();
-      
       // //----------- This function creates a new row when a new ToDO is added in the input field ----------------
       function listLoop(){                
         for (var l = 0; l <  notesArray.length; l++){
           var row = `<td ALIGN=left class="newlist text-black bg-secondary mx-2 p-3 "  ondblclick="editNote(this)" id="tdId"><span class="icon" ><i class="icon fas fa-trash" onclick="deleteNote(this)"></i></span>&nbsp&nbsp${notesArray[l]}</td>`
           
           notesList.innerHTML += row}; 
-        // var summaryNote = `<p class="text-success" id="summaryId">&nbsp${l} activity</p>`  
-        // SummaryNote.innerHTML += summaryNote                         
+          var summaryNote = `<p class="text-info" id="summaryId">&nbsp${l} notes</p>`  
+          Summary.innerHTML += summaryNote                         
         };
 
       //   // --------- This function deletes the selected row content in table and local storage also ----------------
-        function deleteNote(obj){          
-          var notesRownNumber = obj.parentNode.parentNode.parentNode.rowIndex; // var 'notesRownNumber' returns index of selected row
-          
-          //-----------To delete the selected todo, splice is used here --------
-          notesArray.splice((notesRownNumber -1), 1);
-          // ---------- The above line deletes the row, but doesn't delete in local storage. So to delete in local storage also, set the local storage value again with this above array ----------------
-          localStorage.setItem('notes',JSON.stringify(notesArray))
-          window.location.reload();
-          
+      function deleteNote(obj){          
+        var notesRownNumber = obj.parentNode.parentNode.parentNode.rowIndex; // var 'notesRownNumber' returns index of selected row
         
-       };
-      //  displayDetails()
-      //  function displayDetails(){
-      //   n=1
-      //   x=0
-      //   var newRow = table.insertRow(n)
+        //-----------To delete the selected todo, splice is used here --------
+        notesArray.splice((notesRownNumber -1), 1);
+        // ---------- The above line deletes the row, but doesn't delete in local storage. So to delete in local storage also, set the local storage value again with this above array ----------------
+        localStorage.setItem('notes',JSON.stringify(notesArray))
+        window.location.reload();
+      };
+   
 
-      //   var cell1 = newRow.insertCell(0);
-      //   cell1.innerHTML = notesArray[x]
-      //   n++
-      //   x++
-      //  }
-       function editNote(obj){
-       
-      
-        
-        var notesRownNumber = obj.parentNode.rowIndex;
-        console.log( notesRownNumber)
-        AddNote()
-      
-        const editTheNote = document.getElementById('note')
-        //  alert("kudos")
-        
-        editTheNote.value = notesArray[notesRownNumber -1]
-       
-        // editFname.value = table.rows[selectedRow].cells[1].innerHTML;
-       notesArray[notesRownNumber] = editTheNote.value
-       localStorage.setItem('notes', JSON.stringify( notesArray));
-       }
-      
-      //  buttonClose.addEventListener("click", function(e){
-      
-      //   document.getElementById('textAreaForm').style.display="none"
-      // });
   </script>
  
 

@@ -96,8 +96,8 @@
   background-color: rgba(0, 191, 255, 0.1);
 }
 #noteText {
-  box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px;
-  display: contents;
+  display: flex;
+  justify-content: center;
 }
 #note {
   /* box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px; */
@@ -109,11 +109,10 @@
 }
 
 #textAreaForm {
-  /* remove below two lines to get normal box */
-
   background-color: #0dcaf0;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
+  /* cursor: move; */
 }
 #formBtn {
   padding-bottom: 0px;
@@ -122,13 +121,15 @@
   cursor: pointer;
   size: 25%;
 }
-#saveBtn {
+#saveBtn,
+#saveBtnEdit {
   padding-left: 10px;
   padding-right: 5px;
   padding-top: 7px;
   padding-bottom: 3px;
 }
-#closeBtn {
+#closeBtn,
+#closeBtnEdit {
   padding-left: 5px;
   padding-right: 10px;
   padding-top: 7px;
